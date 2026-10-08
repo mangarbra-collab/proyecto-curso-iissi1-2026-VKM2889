@@ -1,11 +1,11 @@
 # Título Proyecto
 
-## Miembros del grupo LX-XXX-X (sustituir)
+## Miembros del grupo L2-ABS-9 (sustituir)
 
-1. Apellidos, Nombre
-1. Apellidos, Nombre
-1. Apellidos, Nombre
-1. Apellidos, Nombre
+1. García Díaz, Álvaro
+1. García De Castro Bracho, Manuel
+1. Sánchez Bracho, Juan de Dios
+1. Piñero Franco, Ángel
 
 ## 1. Introducción al problema
 
