@@ -1,6 +1,6 @@
 # MeETSII
 
-## Miembros del grupo L2-ABS-9 (sustituir)
+## Miembros del grupo L2-ABS-9
 
 1. García Díaz, Álvaro
 1. García De Castro Bracho, Manuel
