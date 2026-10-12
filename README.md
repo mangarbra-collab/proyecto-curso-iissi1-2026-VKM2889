@@ -11,11 +11,17 @@
 
 En el entorno universitario actual, los estudiantes deben lidiar con varias aplicaciones simultáneamente para coordinar sesiones de estudio, organizar material propio y de otros, y resolver dudas colaborativas fuera de clase, entre otros inconvenientes.
 Esta situación genera problemas como:
+
 •	Desorganización del material: las dudas importantes y sus respuestas (si es que alguien se para a leerlas) quedan sepultadas bajo mensajes irrelevantes en los grupos de estudio.
+
 •	Falta de centralización de herramientas: los estudiantes deben saltar de aplicación en aplicación para facilitar sus estudios (Google Meet, Wuolah…), consiguiendo el efecto contrario: desconcentrarse durante largas sesiones.
+
 •	Dificultad para encontrar compañeros: un estudiante que necesita apoyo en materias que se le complican, carece de medios para encontrar grupos universitarios enfocados estrictamente en el estudio, sin caer en la tentación y las distracciones de las redes sociales (WhatsApp, Instagram…).
+
 <img width="886" height="382" alt="image" src="https://github.com/user-attachments/assets/0f88ecc1-358a-4883-ae00-8d736e8fde5d" />
+
 Las expectativas de los usuarios (mayormente universitarios) hacia esta plataforma se concentran en disponer de un entorno centralizado que reúna los recursos necesarios para descubrir grupos de estudio, organizar quedadas con ellos y ordenar el material de cada asignatura; todo ello sin salir del entorno y evitando cualquier distracción.
+
 El objetivo de nuestro proyecto es sencillo: crear una aplicación web que centralice el material necesario para el estudiantado, proporcionando una herramienta rápida, eficiente, social y orientada al aprendizaje común.
 
 ## 2. Glosario de términos
