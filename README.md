@@ -43,15 +43,15 @@ El objetivo de nuestro proyecto es sencillo: crear una aplicación web que centr
 
 ### 3.1. Requisitos generales
 
--Gestión de usuarios y perfiles:
+- Gestión de usuarios y perfiles:
   1. Como administrador quiero poseer control de todos los usuarios existentes en la aplicación para asegurar el correcto uso de la aplicación por parte de los usuarios.
   2. Como estudiante quiero gestionar mi propio perfil para identificarme en la aplicación.
--Gestión de grupos:
-  1. Como administrador quiero consultar y modificar todos los grupos existentes en la aplicación para asegurar el correcto funcionamiento de éstos.
+- Gestión de grupos:
+  - Como administrador quiero consultar y modificar todos los grupos existentes en la aplicación para asegurar el correcto funcionamiento de éstos.
   2. Como estudiante quiero acceder a grupos para usar los servicios que proporciona(tablón de preguntas, salas y quedadas).
--Tablón de preguntas:
+- Tablón de preguntas:
   1. Como estudiante quiero participar en el tablón para resolver mis dudas o las de otros estudiantes.
--Salas y quedadas:
+- Salas y quedadas:
   1. Como estudiante quiero organizar salas y quedadas para poner en común ideas con otros estudiantes.
 
 ### 3.2. Usuarios del sistema
