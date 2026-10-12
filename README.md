@@ -225,42 +225,56 @@ Como Administrador, quiero poder eliminar quedadas programadas en cualquier grup
 - Acceder a un grupo privado sin ser miembro (usando privilegios de Admin) y eliminar una quedada
 
 #### 4.1.1. Requisitos de información
-R.I.01. Información del perfil de Estudiante
+#### R.I.01. Información del perfil de Estudiante
+
 Como Estudiante quiero ver la información personal y académica de mi perfil para que otros compañeros puedan ver mis datos a la hora de formar grupos de estudios.
+
 Prueba de aceptación
 - Comprobar que al acceder a la información personal del estudiante en la aplicación no hay ningún error en los datos.
 
-R.I.02. Información de los Grupos de estudio
+#### R.I.02. Información de los Grupos de estudio
+
 Como Estudiante quiero ver los datos completos de un Grupo de estudio para evaluar si encaja con mis necesidades antes de unirme.
+
 Prueba de aceptación
 - Al entrar a un grupo en la aplicación se comprobará que está toda la información. 
 
-R.I.03. Información del Tablón de Preguntas
+#### R.I.03. Información del Tablón de Preguntas
+
 Como Estudiante quiero poder visualizar todas las preguntas en dicho tablón para comprobar si mi duda se ha resuelto o si las dudas de los demás también me sirven a mi.
+
 Prueba de aceptación
 - Al acceder al tablón se comprobará si las preguntas están en orden cronológico.
 - Se comprobará si al subir una pregunta al tablón, es vista por los demás estudiantes.
 
-R.I.04. Información de las Quedadas
+#### R.I.04. Información de las Quedadas
+
 Como Estudiante quiero consultar la información de una Quedada para poder organizarme.
+
 Prueba de aceptación
 - Veremos si la fecha y la hora se muestran en el formato correcto.
 - Comprobar que el enlace o ubicación es visible solo para los estudiantes que tienen permiso para asistir a la quedada y además si el enlace es funcional y lleva adecuadamente al lugar que debe.
 
-R.I.05. Información de la Sala 
+#### R.I.05. Información de la Sala 
+
 Como Estudiante quiero poder unirme y participar en distintas salas y poder ver lo que pasa en ellas en tiempo real.
+
 Prueba de aceptación
 - Entramos en una sala como estudiante y se probará el funcionamiento correcto del sonido de la sala.
 - Se probará si al entrar varias personas en la sala el funcionamiento de esta es correcto.
 
-R.I.06. Listado e información de Usuarios
+#### R.I.06. Listado e información de Usuarios
+
 Como Administrador quiero regular el registro completo de Usuarios del sistema para así poder moderar la plataforma y gestionar posibles incidencias.
+
 Prueba de aceptación
 - Comprobaremos que se puede acceder desde los permisos de administrador a la lista de todos los usuarios de la aplicación.
 - Nos fijaremos si dicha tabla solo puede ser accedida con permisos de administrador para proteger la privacidad de cada Estudiante.
 
-R.I.07. Información de Administrador
+#### R.I.07. Información de Administrador
+
 Como Administrador quiero consultar la información de las estadísticas de la plataforma para evaluar el uso y el éxito de la aplicación.
+
 Prueba de aceptación
 - Se comprobará que al entrar con los permisos de un Administrador se puede gestionar todo en la aplicación como la creación y destrucción de grupos.
 
