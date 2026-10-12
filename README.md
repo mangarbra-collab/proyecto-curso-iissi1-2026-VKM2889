@@ -15,11 +15,28 @@
 
 - Términos específicos del dominio del problema, ordenados alfabéticamente. Se valorará la presencia de información multimedia.
 
+  
+
 ## 3. Visión general del sistema
 
 ### 3.1. Requisitos generales
 
 ### 3.2. Usuarios del sistema
+
+El sistema por tanto tendrá sólo dos tipos de usuarios, con sus permisos:
+1. Usuario:
+   - Creación de grupos de estudio privados y públicos
+   - Acceso a grupos privados si el usuario tiene el código de unión
+   - Publicación de material y preguntas en el tablón
+   - Creación de quedadas para estudiar dentro de un grupo
+   - Permiso de unión de quedadas si se está dentro de un grupo
+
+2. Administrador:
+  - Implementa todas las funcionalidades contenidas en el tipo de usuario "Estudiante"
+  - Acceso a todos los grupos (incluyendo los privados) por fines de moderación
+  - Permisos para eliminar publicaciones/preguntas en tablones si no son apropiados
+  - Permisos para eliminar quedadas de un grupo si no son apropiadas
+     
 
 ## 4. Catálogo de requisitos
 
