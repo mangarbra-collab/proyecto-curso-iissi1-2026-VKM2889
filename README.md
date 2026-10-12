@@ -26,8 +26,17 @@ El objetivo de nuestro proyecto es sencillo: crear una aplicación web que centr
 
 ## 2. Glosario de términos
 
-- Términos específicos del dominio del problema, ordenados alfabéticamente. Se valorará la presencia de información multimedia.
+•	Biografía: Breve descripción ubicada en el perfil del estudiante, donde detalla qué estudia y las asignaturas que lleva en ese instante, su disponibilidad de quedadas en general, su contacto (redes sociales o teléfono) y sus objetivos.
 
+•	Grupo de Estudio: Conjunto de estudiantes virtual cerrado, dentro de la propia web, y centrado en una materia específica; donde los miembros colaboran y comparten su material.
+
+•	Privacidad del Grupo: Configuración que define qué tipo de acceso al grupo de estudio se desea: si el acceso a un grupo es libre (Público), donde cualquiera puede unirse libremente; o si se requiere la aprobación manual de una solicitud (Privado).
+
+•	Quedada: Encuentro programado con fecha, hora, lugar y duración estimada (ej. Reservar una sala de estudio en el CRAI, X día a X hora); diseñado para el estudio colectivo, que puede tener una ubicación física o virtual en función de cómo se indique.
+
+•	Sala Virtual: Entorno de videoconferencia integrado, con máximo número de participantes definido, donde los miembros de un grupo pueden conectarse en tiempo real vía chat, voz o audio.
+
+•	Tablón de Preguntas: Pequeño foro interno de un grupo de estudio estructurado mediante hilos de conversación, donde los estudiantes publican sus dudas concretas que pueden ser marcadas como resueltas por quien pertenezca al mismo.
   
 
 ## 3. Visión general del sistema
