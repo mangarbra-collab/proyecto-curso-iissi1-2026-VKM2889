@@ -78,30 +78,144 @@ El sistema por tanto tendrá sólo dos tipos de usuarios, con sus permisos:
 
 ### 4.1. Requisitos funcionales
 
-#### R.F.01. Título requisito funcional
+#### R.F.01. Registro de datos
 
-Como [tipo de usuario]
-quiero [servicio]
-para [razón]
+Como estudiante, quiero crear una cuenta para acceder a los servicios de la aplicación
 
 **Prueba de aceptación**
-- Descripción de la primera comprobación a realizar
-- Descripción de la segunda comprobación a realizar
-- Se debe aplicar la regla de negocio R.N.XX.
-- ...
+- Crear una cuenta de estudiante siendo estudiante
+- Crear una cuenta de administrador siendo estudiante (debe fallar)
 
-#### 4.1.1. Requisitos de información
+ 
+#### R.F.02. Gestión de Perfil
 
-##### R.I.01. Título requisito de información
-
-Como [tipo de usuario]
-quiero [servicio]
-para [razón]
+Como estudiante, quiero editar mis datos por si son erróneos o han cambiado
 
 **Prueba de aceptación**
-- Descripción de la primera comprobación a realizar
-- Descripción de la segunda comprobación a realizar
-- ...
+- Editar la carrera al cambiar de carrera
+- Confirmar la edición de la biografía al editarla desde un perfil de estudiante/administrador
+
+
+#### R.F.03. Administración de Usuarios
+
+Como Administrador, quiero editar datos de otras cuentas de estudiantes o incluso vetar para moderar de manera más sencilla
+
+**Prueba de aceptación**
+- Vetar un estudiante y ver si se veta
+- Editar datos (carrera, bio, grupos, etc.) de un estudiante y ver si se editan
+- Vetar un grupo y ver si se veta
+
+
+#### R.F.04. Creación de grupos
+
+Como estudiante, quiero crear grupos de estudio indicando si son públicos o privados para organizar espacios de estudio a medida.
+
+**Prueba de aceptación**
+- Crear un grupo público y verificar que aparece en las búsquedas
+- Crear un grupo privado y verificar que se genera un código de unión y no aparece accesible públicamente
+
+
+#### R.F.05. Búsqueda y unión a grupos
+
+Como estudiante, quiero buscar grupos por materia o nombre y solicitar mi ingreso para encontrar compañeros con mis mismos intereses.
+
+**Prueba de aceptación**
+- Buscar un grupo por una materia o nombre existente y verificar que aparece en los resultados
+- Solicitar el ingreso a un grupo público desde los resultados y verificar que se añade al usuario
+
+
+#### R.F.06. Acceso a grupos privados
+
+Como estudiante, quiero acceder a grupos de estudio privados introduciendo un código de unión para unirme a grupos exclusivos de mis compañeros.
+
+**Prueba de aceptación**
+- Introducir un código de unión válido y verificar el ingreso al grupo privado
+- Intentar acceder con un código erróneo o inventado (debe fallar)
+
+
+#### R.F.07. Gestión de miembros
+
+Como creador del grupo o Administrador, quiero expulsar miembros de un grupo para mantener un entorno de estudio adecuado y moderado.
+
+**Prueba de aceptación**
+- Expulsar a un miembro siendo el creador del grupo y verificar que pierde el acceso
+- Expulsar a un miembro siendo Administrador y verificar que pierde el acceso
+- Intentar expulsar a un miembro siendo un estudiante normal del grupo (debe fallar)
+
+
+#### R.F.08. Publicar material de estudio
+
+Como miembro de un grupo, quiero publicar material en el tablón para compartir apuntes y recursos con mis compañeros.
+
+**Prueba de aceptación**
+- Subir un archivo o enlace válido y verificar que aparece publicado en el tablón del grupo
+- Intentar publicar material en el tablón de un grupo al que no se pertenece (debe fallar)
+
+
+#### R.F.09. Publicar pregunta
+
+Como miembro de un grupo, quiero publicar una duda en el tablón de preguntas para que otros compañeros puedan ayudarme a resolverla.
+
+**Prueba de aceptación**
+- Publicar una pregunta con texto válido y verificar que aparece listada en el tablón del grupo
+- Intentar publicar una pregunta sin texto (debe fallar)
+
+
+#### R.F.10. Marcar pregunta resuelta
+
+Como autor de la pregunta, quiero cambiar el estado de mi duda a "resuelta" para que los demás sepan que ya no necesito ayuda.
+
+**Prueba de aceptación**
+- Marcar una pregunta propia como resuelta y verificar que el estado cambia a `true`
+- Intentar marcar como resuelta la pregunta de otro estudiante sin ser Administrador (debe fallar)
+
+
+#### R.F.11. Crear y unirse a sala virtual
+
+Como miembro de un grupo, quiero abrir o unirme a una sala de videoconferencia asociada al grupo para estudiar en directo con mis compañeros.
+
+**Prueba de aceptación**
+- Abrir una nueva sala virtual dentro del grupo y verificar que el resto de miembros puede verla
+- Unirse a una sala virtual activa siendo miembro del grupo
+- Intentar unirse a la sala virtual de un grupo ajeno (debe fallar)
+
+
+#### R.F.12. Organizar quedada
+
+Como miembro de un grupo, quiero programar una quedada especificando fecha, hora y ubicación (física o virtual) para coordinar sesiones de estudio conjuntas.
+
+**Prueba de aceptación**
+- Crear una quedada con fecha, hora y ubicación física válidas y verificar que se publica
+- Crear una quedada introduciendo un enlace virtual en lugar de ubicación física y verificar su creación
+- Intentar crear una quedada con una fecha u hora en el pasado (debe fallar)
+
+
+#### R.F.13. Confirmación de asistencia
+
+Como miembro de un grupo, quiero marcar mi asistencia a una quedada programada para que los organizadores sepan cuánta gente acudirá.
+
+**Prueba de aceptación**
+- Marcar asistencia a una quedada activa y verificar que el usuario aparece en la lista de asistentes
+- Desmarcar la asistencia a una quedada previamente confirmada y verificar que se elimina de la lista
+
+
+#### R.F.14. Moderación de tablones (Administrador)
+
+Como Administrador, quiero poder eliminar publicaciones o preguntas de cualquier tablón para mantener la plataforma libre de contenido inapropiado.
+
+**Prueba de aceptación**
+- Eliminar una publicación de material inapropiado siendo Administrador y verificar su borrado
+- Eliminar una pregunta inapropiada siendo Administrador y verificar su borrado
+- Intentar eliminar una publicación ajena siendo un estudiante normal (debe fallar)
+
+
+#### R.F.15. Moderación de quedadas (Administrador)
+
+Como Administrador, quiero poder eliminar quedadas programadas en cualquier grupo para evitar actividades que incumplan las normas.
+
+**Prueba de aceptación**
+- Eliminar una quedada activa de un grupo ajeno siendo Administrador y verificar su borrado
+- Acceder a un grupo privado sin ser miembro (usando privilegios de Admin) y eliminar una quedada
 
 #### 4.1.2. Reglas de negocio
 
