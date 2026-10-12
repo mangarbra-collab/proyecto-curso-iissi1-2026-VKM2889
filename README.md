@@ -113,6 +113,8 @@ Como estudiante, quiero crear grupos de estudio indicando si son públicos o pri
 **Prueba de aceptación**
 - Crear un grupo público y verificar que aparece en las búsquedas
 - Crear un grupo privado y verificar que se genera un código de unión y no aparece accesible públicamente
+- Debe cumplir la RN01
+- Debe cumplir la RN05
 
 
 #### R.F.05. Búsqueda y unión a grupos
@@ -122,6 +124,7 @@ Como estudiante, quiero buscar grupos por materia o nombre y solicitar mi ingres
 **Prueba de aceptación**
 - Buscar un grupo por una materia o nombre existente y verificar que aparece en los resultados
 - Solicitar el ingreso a un grupo público desde los resultados y verificar que se añade al usuario
+- Al unirse, debe de cumplir la RN01
 
 
 #### R.F.06. Acceso a grupos privados
@@ -131,6 +134,7 @@ Como estudiante, quiero acceder a grupos de estudio privados introduciendo un c�
 **Prueba de aceptación**
 - Introducir un código de unión válido y verificar el ingreso al grupo privado
 - Intentar acceder con un código erróneo o inventado (debe fallar)
+- 
 
 
 #### R.F.07. Gestión de miembros
@@ -159,6 +163,7 @@ Como miembro de un grupo, quiero publicar una duda en el tablón de preguntas pa
 **Prueba de aceptación**
 - Publicar una pregunta con texto válido y verificar que aparece listada en el tablón del grupo
 - Intentar publicar una pregunta sin texto (debe fallar)
+- Cumplir la RN03 al eliminar una pregunta siendo administrador
 
 
 #### R.F.10. Marcar pregunta resuelta
@@ -178,6 +183,7 @@ Como miembro de un grupo, quiero abrir o unirme a una sala de videoconferencia a
 - Abrir una nueva sala virtual dentro del grupo y verificar que el resto de miembros puede verla
 - Unirse a una sala virtual activa siendo miembro del grupo
 - Intentar unirse a la sala virtual de un grupo ajeno (debe fallar)
+- Debe cumplir la RN04
 
 
 #### R.F.12. Organizar quedada
@@ -197,6 +203,7 @@ Como miembro de un grupo, quiero marcar mi asistencia a una quedada programada p
 **Prueba de aceptación**
 - Marcar asistencia a una quedada activa y verificar que el usuario aparece en la lista de asistentes
 - Desmarcar la asistencia a una quedada previamente confirmada y verificar que se elimina de la lista
+- Debe cumplir la RN02
 
 
 #### R.F.14. Moderación de tablones (Administrador)
@@ -219,9 +226,26 @@ Como Administrador, quiero poder eliminar quedadas programadas en cualquier grup
 
 #### 4.1.2. Reglas de negocio
 
-##### R.N.01. Título regla negocio
+##### R.N.01. Límites de tamaño en grupos
 
-Descripción de la regla de negocio.
+El número de estudiantes unidos a un Grupo no puede superar su valor maxMiembros ni ser inferior a minMiembros (mínimo 2, máximo 20).
+
+##### R.N.02. Gestión de Quedadas
+
+Solo los estudiantes pertenecientes a un Grupo pueden crear o unirse a una Quedada vinculada a dicho grupo.
+
+##### R.N.03. Eliminación de Preguntas en Tablón
+
+Solo el Estudiante que ha hecho una pregunta o un Admin pueden eliminar un post del TablónPreguntas.
+
+##### R.N.04. Coexistencia de Salas
+
+Un Grupo solo puede tener activa una Sala de estudio virtual al mismo tiempo.
+
+##### R.N.05. Aprobación en Grupos Privados
+
+Si un Grupo es marcado como esPrivado = true, la solicitud de ingreso de un nuevo Estudiante debe ser aprobada explícitamente por el creador del grupo o un Admin.
+
 
 ### 4.2. Mapa de historias de usuario (opcional)
 
