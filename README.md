@@ -57,7 +57,7 @@ El objetivo de nuestro proyecto es sencillo: crear una aplicación web que centr
 ### 3.2. Usuarios del sistema
 
 El sistema por tanto tendrá sólo dos tipos de usuarios, con sus permisos:
-1. Usuario:
+1. Estudiante:
 - Creación de grupos de estudio privados y públicos
 - Acceso a grupos privados si el usuario tiene el código de unión
 - Publicación de material y preguntas en el tablón
@@ -117,13 +117,12 @@ Como estudiante, quiero crear grupos de estudio indicando si son públicos o pri
 - Debe cumplir la RN05
 
 
-#### R.F.05. Búsqueda y unión a grupos
+#### R.F.05 Búsqueda de grupos
 
 Como estudiante, quiero buscar grupos por materia o nombre y solicitar mi ingreso para encontrar compañeros con mis mismos intereses.
 
 **Prueba de aceptación**
 - Buscar un grupo por una materia o nombre existente y verificar que aparece en los resultados
-- Solicitar el ingreso a un grupo público desde los resultados y verificar que se añade al usuario
 - Al unirse, debe de cumplir la RN01
 
 
@@ -217,12 +216,20 @@ Como Administrador, quiero poder eliminar publicaciones o preguntas de cualquier
 
 #### R.F.15. Moderación de quedadas (Administrador)
 
-Como Administrador, quiero poder eliminar quedadas programadas en cualquier grupo para evitar actividades que incumplan las normas.
+Como Administrador, quiero poder consultar los datos de las quedadas y eliminar quedadas programadas en cualquier grupo para evitar actividades que incumplan las normas.
 
 **Prueba de aceptación**
 - Eliminar una quedada activa de un grupo ajeno siendo Administrador y verificar su borrado
 - Acceder a un grupo privado sin ser miembro (usando privilegios de Admin) y eliminar una quedada
 
+#### R.F.16. Unión a grupos
+
+Como estudiante, quiero solicitar mi ingreso para encontrar compañeros con mis mismos intereses.
+- Solicitar el ingreso a un grupo público desde los resultados y verificar que se añade al usuario
+- Al unirse, debe de cumplir la RN01
+
+TODO los 10 requisitos funcionales de consulta
+  
 #### 4.1.1. Requisitos de información
 #### R.I.01. Información del perfil de Estudiante
 
