@@ -134,7 +134,6 @@ Como estudiante, quiero acceder a grupos de estudio privados introduciendo un c�
 **Prueba de aceptación**
 - Introducir un código de unión válido y verificar el ingreso al grupo privado
 - Intentar acceder con un código erróneo o inventado (debe fallar)
-- 
 
 
 #### R.F.07. Gestión de miembros
