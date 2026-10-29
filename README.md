@@ -314,22 +314,40 @@ Prueba de aceptación
 
 El número de estudiantes unidos a un Grupo no puede superar su valor maxMiembros ni ser inferior a minMiembros (mínimo 2, máximo 20).
 
+**Prueba de aceptación**
+- El estudiante probará meterse en un grupo con 20 otros estudiantes ya incluidos. (debe fallar)
+- El estudiante probará meterse en un grupo con 15 otros estudiantes ya incluidos.
+
 ##### R.N.02. Gestión de Quedadas
 
 Solo los estudiantes pertenecientes a un Grupo pueden crear o unirse a una Quedada vinculada a dicho grupo.
+
+**Prueba de aceptación**
+- Un estudiante va a intentar crear o unirse a una Quedada vinculada a su grupo.
+- Un estudiante debe intentar visualizar una Quedada vinculada a un grupo al que no pertenece. (debe fallar)
 
 ##### R.N.03. Eliminación de Preguntas en Tablón
 
 Solo el Estudiante que ha hecho una pregunta o un Admin pueden eliminar un post del TablónPreguntas.
 
+**Prueba de aceptación**
+- Un estudiante que no ha creado la pregunta intentará eliminarla. (debe fallar)
+- Un estudiante que ha creado la pregunta intentará eliminarla. 
+
 ##### R.N.04. Coexistencia de Salas
 
 Un Grupo solo puede tener activa una Sala de estudio virtual al mismo tiempo.
+
+**Prueba de aceptación**
+- Se intentará crear una nueva Sala cuando en el Grupo ya hay una existente. (debe fallar)
 
 ##### R.N.05. Aprobación en Grupos Privados
 
 Si un Grupo es marcado como esPrivado = true, la solicitud de ingreso de un nuevo Estudiante debe ser aprobada explícitamente por el creador del grupo o un Admin.
 
+**Prueba de aceptación**
+- Se comprobará que al ser esPrivado = true, un estudiante mande una solicitud de ingreso.
+- Se comprobará que al ser esPrivado = false, un estudiante sea incluido directamente en el grupo.
 
 ### 4.2. Mapa de historias de usuario (opcional)
 
