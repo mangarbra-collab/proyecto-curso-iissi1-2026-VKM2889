@@ -283,7 +283,31 @@ Como Administrador quiero consultar la información de las estadísticas de la p
 
 Prueba de aceptación
 - Se comprobará que al entrar con los permisos de un Administrador se puede gestionar todo en la aplicación como la creación y destrucción de grupos.
+  
+#### R.I.08. Información de Publicación
 
+Como Estudiante quiero poder tener acceso a las publicaciones creadas y a la fecha de creación de las mismas para poder orientarme a la hora de buscar en el tablón de preguntas.
+
+Prueba de aceptación
+- Se comprobará la creación y eliminación de una publicación en el tablón de preguntas.
+- Se comprobará que la información de la publicación es correcta.
+
+#### R.I.09. Información de Pregunta
+
+Como Estudiante quiero dentro de las Publicaciones poder poner un título a mi pregunta y saber si está resuelta por otro estudiante dentro del grupo.
+
+Prueba de aceptación
+- Se comprobará la publicación de una pregunta de un estudiante en la que el título se vea de forma correcta.
+- Se hará una prueba en la que se responda una pregunta y aparezca como respondida.
+  
+#### R.I.10. Información de Respuesta
+
+Como Estudiante quiero dentro de las Publicaciones poder responder a las Preguntas de los demás estudiantes en el Tablón de Preguntas
+
+Prueba de aceptación
+- Se realizará una prueba en la que un estudiante responda a una pregunta y esta sea visualizada de forma correcta por todos los estudiantes que forman el grupo.
+
+  PONER ATRIBUTOS DE LOS REQUISITOS DE INFORMACIÓN
 #### 4.1.2. Reglas de negocio
 
 ##### R.N.01. Límites de tamaño en grupos
