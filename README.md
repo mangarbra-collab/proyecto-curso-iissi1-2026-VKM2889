@@ -464,8 +464,8 @@ Si un Grupo es marcado como `esPrivado = true`, hará falta introducir el `codig
 Si un Usuario es marcado como `esVetado = true` no podrá acceder a ningún grupo de estudio.
 
 **Prueba de aceptación**
--Se comprobará que al ser `esVetado = true`, el sistema le restringirá al estudiante acceder a cualquier grupo de estudio.
--Se comprobará que al ser `esVetado = false`, el sistema le permitirá al estudiante acceder a los grupos de estudio a los que pertenece.
+- Se comprobará que al ser `esVetado = true`, el sistema le restringirá al estudiante acceder a cualquier grupo de estudio.
+- Se comprobará que al ser `esVetado = false`, el sistema le permitirá al estudiante acceder a los grupos de estudio a los que pertenece.
 
 ### 4.2. Mapa de historias de usuario (opcional)
 
