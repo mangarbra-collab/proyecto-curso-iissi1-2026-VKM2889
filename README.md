@@ -264,17 +264,14 @@ Como miembro de un grupo, quiero consultar material en el tablón para utilizarl
 
   
 #### 4.1.1. Requisitos de información
-#### R.I.01. Información del perfil de Estudiante
+#### R.I.01. Información del perfil de Estudiante (Hereda de Usuario)
 
 Como Estudiante quiero ver la información personal y académica de mi perfil para que otros compañeros puedan ver mis datos a la hora de formar grupos de estudios.
 
 Los atributos de este requisito son:
-- nombre: Nombre completo del estudiante.
-- email: Correo electrónico institucional.
 - carrera: Grado o titulación universitaria que cursa.
 - biografia: Breve descripción del estudiante.
 - disponibilidad: Horarios o días disponibles para estudiar/quedadas.
-- contacto: Teléfono o enlaces a redes sociales.
 - objetivos: Metas académicas actuales.
 - esVetado: Estado de la cuenta (Activo / Vetado).
 
@@ -321,7 +318,6 @@ Los atributos de este requisito son:
 - duracionEstimada: Tiempo previsto para la sesión de estudio.
 - esVirtual: Modalidad (Booleano: Presencial / Online).
 - ubicacionFisica: Lugar físico si es presencial (ej. Sala del CRAI).
-- enlaceVirtual: Enlace a la reunión si es virtual (visible solo a miembros/asistentes).
 - listaAsistentes: Nómina de estudiantes que han confirmado asistencia.
 
 Prueba de aceptación
@@ -335,7 +331,6 @@ Como Estudiante quiero poder unirme y participar en distintas salas y poder ver 
 Los atributos de este requisito son:
 - nombre: Nombre o título de la sesión en directo.
 - activa: Estado de la transmisión (Booleano: En emisión / Inactiva).
-- maxParticipantes: Límite de conexiones simultáneas permitidas.
 - participantesConectados: Lista o número actual de usuarios conectados en tiempo real.
 
 Prueba de aceptación
@@ -349,7 +344,7 @@ Como Administrador quiero regular el registro completo de Usuarios del sistema p
 Los atributos de este requisito son:
 - nombre: Nombre completo.
 - email: Dirección de correo electrónico.
-- rol: Tipo de privilegios (Estudiante / Administrador).
+- esAdministrador: Tipo de privilegios (Estudiante / Administrador).
 - fechaRegistro: Fecha de alta en el sistema.
 - esVetado: Estado de moderación del usuario.
 - gruposPertenecientes: Lista de identificadores de grupos donde está inscrito.
@@ -358,7 +353,7 @@ Prueba de aceptación
 - Comprobaremos que se puede acceder desde los permisos de administrador a la lista de todos los usuarios de la aplicación.
 - Nos fijaremos si dicha tabla solo puede ser accedida con permisos de administrador para proteger la privacidad de cada Estudiante.
 
-#### R.I.07. Información de Administrador
+#### R.I.07. Información de Administrador (Hereda de Usuario)
 
 Como Administrador quiero consultar la información de las estadísticas de la plataforma para evaluar el uso y el éxito de la aplicación.
 
@@ -385,27 +380,24 @@ Prueba de aceptación
 - Se comprobará la creación y eliminación de una publicación en el tablón de preguntas.
 - Se comprobará que la información de la publicación es correcta.
 
-#### R.I.09. Información de Pregunta
+#### R.I.09. Información de Pregunta (Hereda de Publicación)
 
 Como Estudiante quiero dentro de las Publicaciones poder poner un título a mi pregunta y saber si está resuelta por otro estudiante dentro del grupo.
 
 Los atributos de este requisito son:
 - titulo: Encabezado o enunciado breve de la duda.
 - estaResuelta: Estado de la duda (Booleano: Resuelta / Pendiente).
-- fechaResolucion: Fecha y hora en la que se marcó como resuelta
 
 Prueba de aceptación
 - Se comprobará la publicación de una pregunta de un estudiante en la que el título se vea de forma correcta.
 - Se hará una prueba en la que se responda una pregunta y aparezca como respondida.
   
-#### R.I.10. Información de Respuesta
+#### R.I.10. Información de Respuesta (Hereda de Publicación)
 
 Como Estudiante quiero dentro de las Publicaciones poder responder a las Preguntas de los demás estudiantes en el Tablón de Preguntas
 
 Los atributos de este requisito son:
-- contenido: Explicación o solución aportada.
-- fechaCreacion: Marca de tiempo de emisión de la respuesta.
-- esSolucionAceptada: Indicador de si el autor de la pregunta la marcó como la respuesta correcta.
+- (los heredados de Publicación)
 
 Prueba de aceptación
 - Se realizará una prueba en la que un estudiante responda a una pregunta y esta sea visualizada de forma correcta por todos los estudiantes que forman el grupo.
