@@ -268,6 +268,16 @@ Como miembro de un grupo, quiero consultar material en el tablón para utilizarl
 
 Como Estudiante quiero ver la información personal y académica de mi perfil para que otros compañeros puedan ver mis datos a la hora de formar grupos de estudios.
 
+Los atributos de este requisito son:
+- nombre: Nombre completo del estudiante.
+- email: Correo electrónico institucional.
+- carrera: Grado o titulación universitaria que cursa.
+- biografia: Breve descripción del estudiante.
+- disponibilidad: Horarios o días disponibles para estudiar/quedadas.
+- contacto: Teléfono o enlaces a redes sociales.
+- objetivos: Metas académicas actuales.
+- esVetado: Estado de la cuenta (Activo / Vetado).
+
 Prueba de aceptación
 - Comprobar que al acceder a la información personal del estudiante en la aplicación no hay ningún error en los datos.
 
@@ -275,12 +285,27 @@ Prueba de aceptación
 
 Como Estudiante quiero ver los datos completos de un Grupo de estudio para evaluar si encaja con mis necesidades antes de unirme.
 
+Los atributos de este requisito son:
+- nombre: Nombre descriptivo del grupo de estudio.
+- materia: Asignatura o temática específica sobre la que trata.
+- descripcion: Detalle del propósito u objetivos del grupo.
+- esPrivado: Configuración de acceso (Booleano: Público / Privado).
+- codigoUnion: Clave alfanumérica requerida para grupos privados.
+- minMiembros: Número mínimo de integrantes permitidos (mínimo 2).
+- maxMiembros: Número máximo de integrantes permitidos (máximo 20).
+- fechaCreacion: Fecha y hora en la que se constituyó el grupo.
+
 Prueba de aceptación
 - Al entrar a un grupo en la aplicación se comprobará que está toda la información. 
 
 #### R.I.03. Información del Tablón de Preguntas
 
 Como Estudiante quiero poder visualizar todas las preguntas en dicho tablón para comprobar si mi duda se ha resuelto o si las dudas de los demás también me sirven a mi.
+
+Los atributos de este requisito son:
+- listaPublicaciones: Colección ordenada cronológicamente de publicaciones e hilos.
+- totalPreguntas: Contador de dudas publicadas.
+- totalResueltas: Contador de dudas que ya tienen solución.
 
 Prueba de aceptación
 - Al acceder al tablón se comprobará si las preguntas están en orden cronológico.
@@ -290,6 +315,15 @@ Prueba de aceptación
 
 Como Estudiante quiero consultar la información de una Quedada para poder organizarme.
 
+Los atributos de este requisito son:
+- titulo: Nombre o motivo de la quedada.
+- fechaHora: Fecha y hora programadas para el inicio.
+- duracionEstimada: Tiempo previsto para la sesión de estudio.
+- esVirtual: Modalidad (Booleano: Presencial / Online).
+- ubicacionFisica: Lugar físico si es presencial (ej. Sala del CRAI).
+- enlaceVirtual: Enlace a la reunión si es virtual (visible solo a miembros/asistentes).
+- listaAsistentes: Nómina de estudiantes que han confirmado asistencia.
+
 Prueba de aceptación
 - Veremos si la fecha y la hora se muestran en el formato correcto.
 - Comprobar que el enlace o ubicación es visible solo para los estudiantes que tienen permiso para asistir a la quedada y además si el enlace es funcional y lleva adecuadamente al lugar que debe.
@@ -297,6 +331,12 @@ Prueba de aceptación
 #### R.I.05. Información de la Sala 
 
 Como Estudiante quiero poder unirme y participar en distintas salas y poder ver lo que pasa en ellas en tiempo real.
+
+Los atributos de este requisito son:
+- nombre: Nombre o título de la sesión en directo.
+- activa: Estado de la transmisión (Booleano: En emisión / Inactiva).
+- maxParticipantes: Límite de conexiones simultáneas permitidas.
+- participantesConectados: Lista o número actual de usuarios conectados en tiempo real.
 
 Prueba de aceptación
 - Entramos en una sala como estudiante y se probará el funcionamiento correcto del sonido de la sala.
@@ -306,6 +346,14 @@ Prueba de aceptación
 
 Como Administrador quiero regular el registro completo de Usuarios del sistema para así poder moderar la plataforma y gestionar posibles incidencias.
 
+Los atributos de este requisito son:
+- nombre: Nombre completo.
+- email: Dirección de correo electrónico.
+- rol: Tipo de privilegios (Estudiante / Administrador).
+- fechaRegistro: Fecha de alta en el sistema.
+- esVetado: Estado de moderación del usuario.
+- gruposPertenecientes: Lista de identificadores de grupos donde está inscrito.
+
 Prueba de aceptación
 - Comprobaremos que se puede acceder desde los permisos de administrador a la lista de todos los usuarios de la aplicación.
 - Nos fijaremos si dicha tabla solo puede ser accedida con permisos de administrador para proteger la privacidad de cada Estudiante.
@@ -314,12 +362,24 @@ Prueba de aceptación
 
 Como Administrador quiero consultar la información de las estadísticas de la plataforma para evaluar el uso y el éxito de la aplicación.
 
+Los atributos de este requisito son:
+- totalUsuarios: Número total de usuarios registrados en la plataforma.
+- totalGrupos: Número global de grupos creados (públicos y privados).
+- totalQuedadas: Total de quedadas programadas en la plataforma.
+- totalPublicaciones: Número de materiales y preguntas subidos.
+- usuariosVetados: Cantidad de cuentas restringidas/bloqueadas.
+- gruposVetados: Cantidad de grupos moderados/bloqueados.
+
 Prueba de aceptación
 - Se comprobará que al entrar con los permisos de un Administrador se puede gestionar todo en la aplicación como la creación y destrucción de grupos.
   
 #### R.I.08. Información de Publicación
 
 Como Estudiante quiero poder tener acceso a las publicaciones creadas y a la fecha de creación de las mismas para poder orientarme a la hora de buscar en el tablón de preguntas.
+
+Los atributos de este requisito son:
+- contenido: Texto descriptivo o cuerpo del mensaje.
+- fechaCreacion: Marca de tiempo exacta (fecha y hora) de creación.
 
 Prueba de aceptación
 - Se comprobará la creación y eliminación de una publicación en el tablón de preguntas.
@@ -329,6 +389,11 @@ Prueba de aceptación
 
 Como Estudiante quiero dentro de las Publicaciones poder poner un título a mi pregunta y saber si está resuelta por otro estudiante dentro del grupo.
 
+Los atributos de este requisito son:
+- titulo: Encabezado o enunciado breve de la duda.
+- estaResuelta: Estado de la duda (Booleano: Resuelta / Pendiente).
+- fechaResolucion: Fecha y hora en la que se marcó como resuelta
+
 Prueba de aceptación
 - Se comprobará la publicación de una pregunta de un estudiante en la que el título se vea de forma correcta.
 - Se hará una prueba en la que se responda una pregunta y aparezca como respondida.
@@ -336,6 +401,11 @@ Prueba de aceptación
 #### R.I.10. Información de Respuesta
 
 Como Estudiante quiero dentro de las Publicaciones poder responder a las Preguntas de los demás estudiantes en el Tablón de Preguntas
+
+Los atributos de este requisito son:
+- contenido: Explicación o solución aportada.
+- fechaCreacion: Marca de tiempo de emisión de la respuesta.
+- esSolucionAceptada: Indicador de si el autor de la pregunta la marcó como la respuesta correcta.
 
 Prueba de aceptación
 - Se realizará una prueba en la que un estudiante responda a una pregunta y esta sea visualizada de forma correcta por todos los estudiantes que forman el grupo.
