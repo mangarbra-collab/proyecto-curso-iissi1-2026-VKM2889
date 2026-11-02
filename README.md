@@ -58,17 +58,17 @@ El objetivo de nuestro proyecto es sencillo: crear una aplicación web que centr
 
 El sistema por tanto tendrá sólo dos tipos de usuarios, con sus permisos:
 1. Estudiante:
-- Creación de grupos de estudio privados y públicos
-- Acceso a grupos privados si el usuario tiene el código de unión
-- Publicación de material y preguntas en el tablón
-- Creación de quedadas para estudiar dentro de un grupo
-- Permiso de unión de quedadas si se está dentro de un grupo
+- Creación y unión de grupos de estudio públicos y privados (mediante código o solicitud)
+- Publicación y consulta de material, preguntas y respuestas en el tablón
+- Creación, búsqueda y asistencia a quedadas para estudiar dentro de un grupo
+- Gestión exclusiva de los datos de su propio perfil
  
 2. Administrador:
-- Implementa todas las funcionalidades contenidas en el tipo de usuario "Estudiante"
-- Acceso a todos los grupos (incluyendo los privados) por fines de moderación
-- Permisos para eliminar publicaciones/preguntas en tablones si no son apropiados
-- Permisos para eliminar quedadas de un grupo si no son apropiadas
+- No participa en actividades de estudio, sino que vela por el cumplimiento de la normativa de la plataforma.
+- Consulta del registro global de usuarios y capacidad de vetar/suspender cuentas infractorias.
+- Acceso a todos los grupos (incluyendo los privados) por fines de moderación y capacidad para clausurarlos.
+- Permisos de moderación para eliminar publicaciones, quedadas, preguntas y respuestas en tablones si no son apropiadas.
+- Permisos de moderación para consultar el panel de métricas de la plataforma.
 
 
 
@@ -80,30 +80,29 @@ El sistema por tanto tendrá sólo dos tipos de usuarios, con sus permisos:
 
 #### R.F.01. Registro de datos
 
-Como estudiante, quiero crear una cuenta para acceder a los servicios de la aplicación
+Como estudiante, quiero crear una cuenta para acceder a los servicios de la aplicación.
 
 **Prueba de aceptación**
-- Crear una cuenta de estudiante siendo estudiante
-- Crear una cuenta de administrador siendo estudiante (debe fallar)
+- Crear una cuenta de estudiante con datos válidos y verificar el alta en el sistema.
+- Intentar crear una cuenta de administrador desde el formulario público (debe fallar).
 
- 
+
 #### R.F.02. Gestión de Perfil
 
-Como estudiante, quiero editar mis datos por si son erróneos o han cambiado
+Como estudiante, quiero editar mis datos personales y académicos por si son erróneos o han cambiado.
 
 **Prueba de aceptación**
-- Editar la carrera al cambiar de carrera
-- Confirmar la edición de la biografía al editarla desde un perfil de estudiante/administrador
+- Editar la titulación y la disponibilidad en el perfil y verificar que se guarden los datos.
+- Intentar dejar el campo obligatorio de correo electrónico vacío (debe fallar).
 
 
-#### R.F.03. Administración de Usuarios
+#### R.F.03. Administración y veto de Usuarios (Administrador)
 
-Como Administrador, quiero editar datos de otras cuentas de estudiantes o incluso vetar para moderar de manera más sencilla
+Como Administrador, quiero editar datos de otras cuentas de estudiantes o incluso vetar para mantener la plataforma moderada.
 
 **Prueba de aceptación**
-- Vetar un estudiante y ver si se veta
-- Editar datos (carrera, bio, grupos, etc.) de un estudiante y ver si se editan
-- Vetar un grupo y ver si se veta
+- Vetar un estudiante infractor (cambiar el estado) y verificar que no puede iniciar sesión.
+- Vetar un grupo que incumpla la normativa y verificar que está bloqueado.
 
 
 #### R.F.04. Creación de grupos
@@ -111,78 +110,75 @@ Como Administrador, quiero editar datos de otras cuentas de estudiantes o inclus
 Como estudiante, quiero crear grupos de estudio indicando si son públicos o privados para organizar espacios de estudio a medida.
 
 **Prueba de aceptación**
-- Crear un grupo público y verificar que aparece en las búsquedas
-- Crear un grupo privado y verificar que se genera un código de unión y no aparece accesible públicamente
-- Debe cumplir la RN01
-- Debe cumplir la RN05
+- Crear un grupo público y verificar que aparece en las búsquedas como abierto.
+- Crear un grupo privado y verificar que se genera un código de unión y exige verificación.
+- Verificar que el grupo se inicia respetando los límites de la RN01 y la configuración de la RN05.
 
 
-#### R.F.05 Búsqueda de grupos (1)
+#### R.F.05. Búsqueda de grupos y solicitud de unión
 
-Como estudiante, quiero buscar grupos por materia o nombre y solicitar mi ingreso para encontrar compañeros con mis mismos intereses.
+Como estudiante, quiero buscar grupos públicos por materia o nombre y solicitar mi ingreso para encontrar compañeros con mis mismos intereses.
 
 **Prueba de aceptación**
-- Buscar un grupo por una materia o nombre existente y verificar que aparece en los resultados
-- Al unirse, debe de cumplir la RN01
+- Buscar un grupo por una materia o nombre existente y verificar que aparece en los resultados.
+- Unirse a un grupo de la lista verificando que cumple el límite de miembros de la RN01.
 
 
 #### R.F.06. Acceso a grupos privados
 
-Como estudiante, quiero acceder a grupos de estudio privados introduciendo un código de unión para unirme a grupos exclusivos de mis compañeros.
+Como estudiante, quiero acceder a grupos de estudio privados introduciendo un código de unión para unirme a grupos exclusivos.
 
 **Prueba de aceptación**
-- Introducir un código de unión válido y verificar el ingreso al grupo privado
-- Intentar acceder con un código erróneo o inventado (debe fallar)
+- Introducir un código de unión válido y verificar que se guarda la solicitud de unión pendiente según la RN05.
+- Intentar acceder con un código erróneo o inventado (debe fallar).
 
 
-#### R.F.07. Gestión y búsqueda de miembros (2)
+#### R.F.07. Búsqueda y gestión de miembros
 
-Como creador del grupo o Administrador, quiero expulsar miembros de un grupo para mantener un entorno de estudio adecuado y moderado.
+Como creador del grupo o Administrador, quiero expulsar miembros de un grupo, buscándolos por su nombre de usuario, para mantener un entorno de estudio adecuado y moderado.
 
 **Prueba de aceptación**
-- Buscar a un miembro por su username y que se enseñe su perfil
-- Expulsar a un miembro siendo el creador del grupo y verificar que pierde el acceso
-- Expulsar a un miembro siendo Administrador y verificar que pierde el acceso
-- Intentar expulsar a un miembro siendo un estudiante normal del grupo (debe fallar)
+- Buscar a un miembro por su nombre de usuario y verificar que se muestra su perfil.
+- Expulsar a un miembro siendo el creador del grupo o Administrador, y verificar que pierde el acceso.
+- Intentar expulsar a un miembro siendo un estudiante sin permisos del creador del grupo ni de Administrador (debe fallar).
 
 
 #### R.F.08. Publicar material de estudio
 
-Como miembro de un grupo, quiero publicar material en el tablón para compartir apuntes y recursos con mis compañeros.
+Como miembro de un grupo, quiero publicar material en el tablón de preguntas para compartir apuntes y recursos con mis compañeros.
 
 **Prueba de aceptación**
-- Subir un archivo o enlace válido y verificar que aparece publicado en el tablón del grupo
-- Intentar publicar material en el tablón de un grupo al que no se pertenece (debe fallar)
+- Subir un archivo o enlace válido y verificar que queda publicado en el tablón del grupo.
+- Intentar publicar material en el tablón de un grupo al que no se pertenece (debe fallar).
 
 
 #### R.F.09. Publicar pregunta
 
-Como miembro de un grupo, quiero publicar una duda en el tablón de preguntas para que otros compañeros puedan ayudarme a resolverla.
+Como miembro de un grupo, quiero publicar una duda con título y descripción en el tablón de preguntas para que otros compañeros puedan ayudarme a resolverla.
 
 **Prueba de aceptación**
-- Publicar una pregunta con texto válido y verificar que aparece listada en el tablón del grupo
-- Intentar publicar una pregunta sin texto (debe fallar)
-- Cumplir la RN03 al eliminar una pregunta siendo administrador
+- Publicar una pregunta con título y cuerpo válidos y verificar que aparece listada en el tablón del grupo.
+- Intentar publicar una pregunta sin título ni cuerpo (debe fallar).
 
 
-#### R.F.10. Marcar pregunta resuelta
+#### R.F.10. Responder pregunta y marcarla como resuelta
 
-Como autor de la pregunta, quiero cambiar el estado de mi duda a "resuelta" para que los demás sepan que ya no necesito ayuda.
-
-**Prueba de aceptación**
-- Marcar una pregunta propia como resuelta y verificar que el estado cambia a `true`
-- Intentar marcar como resuelta la pregunta de otro estudiante sin ser Administrador (debe fallar)
-
-
-#### R.F.11. Búsqueda, creación y unión de salas virtuales (3)
-
-Como miembro de un grupo, quiero abrir o unirme a una sala de videoconferencia asociada al grupo para estudiar en directo con mis compañeros.
+Como miembro de un grupo, quiero responder a las preguntas del tablón, y si soy el autor de la pregunta, quiero cambiar el estado de mi duda a "resuelta" cuando quede aclarada.
 
 **Prueba de aceptación**
-- Abrir una nueva sala virtual dentro del grupo y verificar que el resto de miembros puede buscarla dentro del grupo y verla
-- Unirse a una sala virtual activa siendo miembro del grupo
-- Intentar unirse a la sala virtual de un grupo ajeno (debe fallar)
-- Debe cumplir la RN04
+- Subir una respuesta en una pregunta abierta y verificar que se añade al hilo de la conversación correspondiente.
+- Marcar una pregunta propia como resuelta y verificar que el estado cambia a `true`.
+- Intentar marcar como resuelta la pregunta de otro estudiante sin ser Administrador (debe fallar).
+
+
+#### R.F.11. Búsqueda, creación y unión de salas virtuales
+
+Como miembro de un grupo, quiero consultar si hay una videollamada en curso, unirme (o abrir) una sala de videoconferencia nueva asociada al grupo para estudiar con mis compañeros en directo.
+
+**Prueba de aceptación**
+- Abrir una nueva sala virtual dentro del grupo si no hay una activa, y unirse a ella siendo miembro del grupo.
+- Consultar la sección de salas virtuales del grupo y verificar si aparece listada una activa con sus miembros participantes.
+- Intentar abrir una segunda sala virtual cuando ya hay una activa incumpliendo la RN04 (debe fallar).
 
 
 #### R.F.12. Organizar quedada
@@ -190,19 +186,17 @@ Como miembro de un grupo, quiero abrir o unirme a una sala de videoconferencia a
 Como miembro de un grupo, quiero programar una quedada especificando fecha, hora y ubicación (física o virtual) para coordinar sesiones de estudio conjuntas.
 
 **Prueba de aceptación**
-- Crear una quedada con fecha, hora y ubicación física válidas y verificar que se publica
-- Crear una quedada introduciendo un enlace virtual en lugar de ubicación física y verificar su creación
-- Intentar crear una quedada con una fecha u hora en el pasado (debe fallar)
+- Crear una quedada con fecha, hora y ubicación física válidas y verificar que se publica.
+- Intentar crear una quedada con una fecha u hora en el pasado (debe fallar).
 
 
-#### R.F.13. Búsqueda de quedada y confirmación de asistencia (4)
+#### R.F.13. Búsqueda de quedada y confirmación de asistencia
 
-Como miembro de un grupo, quiero buscar una quedada en ese mismo grupo y marcar mi asistencia a una quedada programada para que los organizadores sepan cuánta gente acudirá.
+Como miembro de un grupo, quiero buscar una quedada programada en ese mismo grupo y marcar mi asistencia para que los organizadores sepan cuánta gente acudirá.
 
 **Prueba de aceptación**
-- Marcar asistencia a una quedada activa y verificar que el usuario aparece en la lista de asistentes
-- Desmarcar la asistencia a una quedada previamente confirmada y verificar que se elimina de la lista
-- Debe cumplir la RN02
+- Filtrar la lista de quedadas programadas del grupo por fecha y verificar que se muestran los eventos filtrados.
+- Confirmar o cancelar la asistencia a una quedada activa cumpliendo la pertenencia exigida en la RN02.
 
 
 #### R.F.14. Moderación de tablones (Administrador)
@@ -210,159 +204,268 @@ Como miembro de un grupo, quiero buscar una quedada en ese mismo grupo y marcar 
 Como Administrador, quiero poder eliminar publicaciones o preguntas de cualquier tablón para mantener la plataforma libre de contenido inapropiado.
 
 **Prueba de aceptación**
-- Eliminar una publicación de material inapropiado siendo Administrador y verificar su borrado
-- Eliminar una pregunta inapropiada siendo Administrador y verificar su borrado
-- Intentar eliminar una publicación ajena siendo un estudiante normal (debe fallar)
+- Eliminar una pregunta o una publicación de material inapropiado siendo Administrador cumpliendo la RN03 y verificar su borrado.
+- Intentar eliminar una publicación ajena con cuenta de estudiante (debe fallar).
 
 
-#### R.F.15. Moderación de quedadas (Administrador) (5)
+#### R.F.15. Moderación de quedadas (Administrador)
 
-Como Administrador, quiero poder consultar los datos de las quedadas y eliminar quedadas programadas en cualquier grupo para evitar actividades que incumplan las normas.
-
-**Prueba de aceptación**
-- Eliminar una quedada activa de un grupo ajeno siendo Administrador y verificar su borrado
-- Acceder a un grupo privado sin ser miembro (usando privilegios de Admin) y eliminar una quedada
-
-
-TODO los 10 requisitos funcionales de consulta
-
-#### R.F.16. Búsqueda de datos en Perfil (6)
-
-Como estudiante, quiero ver mis datos públicos y privados almacenados en mi perfil 
+Como Administrador, quiero poder consultar la lista de las quedadas programadas de cualquier grupo y eliminar aquellas que incumplan las normas.
 
 **Prueba de aceptación**
-- Enseñar los datos al entrar en la sección de datos del perfil
-- No enseñar el dato si no está incluido o es un dato no soportado
+- Eliminar una quedada activa fraudulenta siendo Administrador y verificar su borrado del grupo.
+- Consultar el listado de quedadas programadas de cualquier grupo, incluso siendo privado, con permisos de Administrador.
 
 
-#### R.F.17. Consulta de material de estudio (7)
+#### R.F.16. Búsqueda de datos de Perfil
 
-Como miembro de un grupo, quiero consultar el material publicado en el tablón por otros compañeros.
-
-**Prueba de aceptación**
-- Consultar un archivo o enlace válido que aparece publicado en el tablón
-- Intentar consultar material en el tablón de un grupo al que no se pertenece (debe fallar)
-
-
-#### R.F.18. Consultar pregunta (8)
-
-Como miembro de un grupo, quiero consultar las preguntas que otros compañeros han hecho para quizás resolver mi duda sin tener que preguntar
+Como estudiante, quiero ver los datos académicos y de disponibilidad de mi perfil y de otros estudiantes de mi grupo.
 
 **Prueba de aceptación**
-- Consultar una pregunta creada por un compañero que aparezca listada en el tablón del grupo
-- Intentar consultar una pregunta que no existe (debe fallar)
-- Cumplir la RN03 al eliminar una pregunta siendo administrador
+- Acceder al perfil de un estudiante y verificar que se muestran sus redes sociales, su carrera y sus horarios de estudio.
+- Intentar visualizar datos privados de un usuario (debe fallar).
 
 
-#### R.F.08. Consultar material de estudio (9)
+#### R.F.17. Consulta y filtrado de material de estudio
 
-Como miembro de un grupo, quiero consultar material en el tablón para utilizarlo en mis estudios.
+Como miembro de un grupo, quiero consultar y buscar el material publicado en el tablón por otros compañeros para descargar apuntes.
 
 **Prueba de aceptación**
-- Consultar un archivo o enlace válido que aparece publicado en el tablón del grupo
-- Intentar consultar material en el tablón de un grupo al que no se pertenece (debe fallar)
+- Buscar un archivo o enlace válido en el tablón por su título y acceder al recurso correspondiente.
+- Intentar consultar material en el tablón de un grupo al que no se pertenece (debe fallar).
+
+
+#### R.F.18. Consultas de preguntas y respuestas del tablón
+
+Como miembro de un grupo, quiero consultar las preguntas del tablón (filtrando por "resueltas" o "pendientes") y resolver mi duda sin repetir hilos.
+
+**Prueba de aceptación**
+- Filtrar las preguntas del tablón por "resueltas" y verificar que solo aparecen listadas aquellas con estado `true` y sus respuestas.
+- Intentar consultar una pregunta eliminada o de un grupo ajeno privado (debe fallar).
+
+
+#### R.F.19. Consulta global de usuarios registrados (Administrador)
+
+Como Administrador, quiero buscar y consultar el listado completo de usuarios registrados en el sistema para inspeccionar cuentas y gestionar incidencias.
+
+**Prueba de aceptación**
+- Consultar la lista completa de Usuarios del sistema filtrando por "activo" o "vetado" desde una cuenta de Administrador.
+- Intentar acceder al listado global de Usuarios desde una cuenta de estudiante (debe fallar).
+
+
+#### R.F.20. Consulta global de estadísticas de la plataforma (Administrador)
+
+Como Administrador, quiero consultar las métricas de la plataforma (total de usuarios, total de grupos activos, total de quedadas…) para estudiar el rendimiento de la plataforma.
+
+**Prueba de aceptación**
+- Acceder al panel de estadísticas como Administrador y verificar que se muestran los datos y contadores actualizados en tiempo real.
+- Intentar acceder al panel de métricas desde una cuenta de estudiante (debe fallar).
 
   
-#### 4.1.1. Requisitos de información
-#### R.I.01. Información del perfil de Estudiante
+### 4.1.1. Requisitos de información
 
-Como Estudiante quiero ver la información personal y académica de mi perfil para que otros compañeros puedan ver mis datos a la hora de formar grupos de estudios.
+#### R.I.01. Información del perfil de Estudiante (Hereda de Usuario)
 
-Prueba de aceptación
-- Comprobar que al acceder a la información personal del estudiante en la aplicación no hay ningún error en los datos.
+Como Estudiante, quiero ver la información personal y académica de mi perfil para que otros compañeros puedan ver mis datos a la hora de formar grupos de estudio.
+
+**Los atributos de este requisito son:**
+- `carrera`: Grado o titulación universitaria que cursa.
+- `biografia`: Breve descripción del estudiante.
+- `disponibilidad`: Horarios o días disponibles para estudiar/quedadas.
+- `objetivos`: Metas académicas actuales.
+- `contacto`: Redes sociales o teléfono de contacto.
+
+**Prueba de aceptación**
+- Comprobar que al acceder a la información personal del estudiante en la aplicación se visualizan correctamente su carrera, biografía, disponibilidad, objetivos y contacto sin ningún error en los datos.
+
 
 #### R.I.02. Información de los Grupos de estudio
 
-Como Estudiante quiero ver los datos completos de un Grupo de estudio para evaluar si encaja con mis necesidades antes de unirme.
+Como Estudiante, quiero ver los datos completos de un Grupo de estudio para evaluar si encaja con mis necesidades antes de unirme.
 
-Prueba de aceptación
-- Al entrar a un grupo en la aplicación se comprobará que está toda la información. 
+**Los atributos de este requisito son:**
+- `nombre`: Nombre descriptivo del grupo de estudio.
+- `materia`: Asignatura o temática específica sobre la que trata.
+- `descripcion`: Detalle del propósito u objetivos del grupo.
+- `esPrivado`: Configuración de acceso (Booleano: Público / Privado).
+- `codigoUnion`: Clave alfanumérica requerida para grupos privados.
+- `minMiembros`: Número mínimo de integrantes permitidos (mínimo 2).
+- `maxMiembros`: Número máximo de integrantes permitidos (máximo 20).
+- `fechaCreacion`: Fecha y hora en la que se constituyó el grupo.
+
+**Prueba de aceptación**
+- Al entrar a la ficha de un grupo en la aplicación se comprobará que se muestra toda su información descriptiva, privacidad y límites de miembros.
+
 
 #### R.I.03. Información del Tablón de Preguntas
 
-Como Estudiante quiero poder visualizar todas las preguntas en dicho tablón para comprobar si mi duda se ha resuelto o si las dudas de los demás también me sirven a mi.
+Como Estudiante, quiero poder visualizar todas las preguntas en dicho tablón para comprobar si mi duda se ha resuelto o si las dudas de los demás también me sirven a mí.
 
-Prueba de aceptación
-- Al acceder al tablón se comprobará si las preguntas están en orden cronológico.
-- Se comprobará si al subir una pregunta al tablón, es vista por los demás estudiantes.
+**Los atributos de este requisito son:**
+- `listaPublicaciones`: Colección ordenada cronológicamente de publicaciones e hilos.
+- `totalPreguntas`: Contador de dudas publicadas.
+- `totalResueltas`: Contador de dudas que ya tienen solución.
+
+**Prueba de aceptación**
+- Al acceder al tablón se comprobará si las preguntas están en orden cronológico y los contadores actualizados.
+- Se comprobará si al subir una pregunta al tablón, es vista por los demás estudiantes del grupo.
+
 
 #### R.I.04. Información de las Quedadas
 
-Como Estudiante quiero consultar la información de una Quedada para poder organizarme.
+Como Estudiante, quiero consultar la información de una Quedada para poder organizarme.
 
-Prueba de aceptación
-- Veremos si la fecha y la hora se muestran en el formato correcto.
-- Comprobar que el enlace o ubicación es visible solo para los estudiantes que tienen permiso para asistir a la quedada y además si el enlace es funcional y lleva adecuadamente al lugar que debe.
+**Los atributos de este requisito son:**
+- `titulo`: Nombre o motivo de la quedada.
+- `fechaHora`: Fecha y hora programadas para el inicio.
+- `duracionEstimada`: Tiempo previsto para la sesión de estudio.
+- `esVirtual`: Modalidad (Booleano: Presencial / Online).
+- `ubicacionOEnlace`: Lugar físico si es presencial (ej. Sala del CRAI) o enlace si es virtual.
+- `listaAsistentes`: Nómina de estudiantes que han confirmado asistencia.
 
-#### R.I.05. Información de la Sala 
+**Prueba de aceptación**
+- Veremos si la fecha, la hora y la duración estimada se muestran en el formato correcto.
+- Comprobar que el enlace o ubicación y la lista de asistentes son visibles solo para los estudiantes que pertenecen al grupo y que el enlace es funcional.
 
-Como Estudiante quiero poder unirme y participar en distintas salas y poder ver lo que pasa en ellas en tiempo real.
 
-Prueba de aceptación
-- Entramos en una sala como estudiante y se probará el funcionamiento correcto del sonido de la sala.
-- Se probará si al entrar varias personas en la sala el funcionamiento de esta es correcto.
+#### R.I.05. Información de la Sala
+
+Como Estudiante, quiero consultar los datos de las salas virtuales activas en mi grupo y ver lo que pasa en ellas en tiempo real.
+
+**Los atributos de este requisito son:**
+- `nombre`: Nombre o título de la sesión en directo.
+- `activa`: Estado de la transmisión (Booleano: En emisión / Inactiva).
+- `participantesConectados`: Lista o número actual de usuarios conectados en tiempo real.
+
+**Prueba de aceptación**
+- Consultar una sala como estudiante del grupo y comprobar que muestra correctamente su nombre y su estado (`activa`).
+- Se probará si al entrar varias personas en la sala el listado o contador de `participantesConectados` se actualiza en tiempo real.
+
 
 #### R.I.06. Listado e información de Usuarios
 
-Como Administrador quiero regular el registro completo de Usuarios del sistema para así poder moderar la plataforma y gestionar posibles incidencias.
+Como Administrador, quiero consultar el registro completo de Usuarios del sistema para así poder moderar la plataforma y gestionar posibles incidencias.
 
-Prueba de aceptación
-- Comprobaremos que se puede acceder desde los permisos de administrador a la lista de todos los usuarios de la aplicación.
-- Nos fijaremos si dicha tabla solo puede ser accedida con permisos de administrador para proteger la privacidad de cada Estudiante.
+**Los atributos de este requisito son:**
+- `nombre`: Nombre completo.
+- `email`: Dirección de correo electrónico.
+- `esAdministrador`: Tipo de privilegios (Estudiante / Administrador).
+- `fechaRegistro`: Fecha de alta en el sistema.
+- `esVetado`: Estado de moderación del usuario (Activo / Vetado).
+- `gruposPertenecientes`: Lista de identificadores de grupos donde está inscrito.
 
-#### R.I.07. Información de Administrador
+**Prueba de aceptación**
+- Comprobaremos que se puede acceder desde los permisos de administrador a la lista con los atributos de todos los usuarios de la aplicación.
+- Nos fijaremos en que dicha tabla solo pueda ser accedida con permisos de administrador para proteger la privacidad de cada Estudiante (debe fallar para estudiantes).
 
-Como Administrador quiero consultar la información de las estadísticas de la plataforma para evaluar el uso y el éxito de la aplicación.
 
-Prueba de aceptación
-- Se comprobará que al entrar con los permisos de un Administrador se puede gestionar todo en la aplicación como la creación y destrucción de grupos.
-  
+#### R.I.07. Información de Administrador (Hereda de Usuario)
+
+Como Administrador, quiero consultar la información de las estadísticas de la plataforma para evaluar el uso y el éxito de la aplicación.
+
+**Los atributos de este requisito son:**
+- `totalUsuarios`: Número total de usuarios registrados en la plataforma.
+- `totalGrupos`: Número global de grupos creados (públicos y privados).
+- `totalQuedadas`: Total de quedadas programadas en la plataforma.
+- `totalPublicaciones`: Número de materiales y preguntas subidos.
+- `usuariosVetados`: Cantidad de cuentas restringidas/bloqueadas.
+- `gruposVetados`: Cantidad de grupos moderados/bloqueados.
+
+**Prueba de aceptación**
+- Se comprobará que al entrar al panel con los permisos de un Administrador se visualizan sin errores todos los contadores estadísticos de usuarios, grupos, quedadas y publicaciones.
+
+
 #### R.I.08. Información de Publicación
 
-Como Estudiante quiero poder tener acceso a las publicaciones creadas y a la fecha de creación de las mismas para poder orientarme a la hora de buscar en el tablón de preguntas.
+Como Estudiante, quiero poder tener acceso a los datos de las publicaciones creadas y a la fecha de creación de las mismas para poder orientarme a la hora de buscar en el tablón.
 
-Prueba de aceptación
-- Se comprobará la creación y eliminación de una publicación en el tablón de preguntas.
-- Se comprobará que la información de la publicación es correcta.
+**Los atributos de este requisito son:**
+- `autor`: Estudiante que ha creado la publicación.
+- `contenido`: Texto descriptivo, archivo adjunto o cuerpo del mensaje.
+- `fechaCreacion`: Marca de tiempo exacta (fecha y hora) de creación.
 
-#### R.I.09. Información de Pregunta
+**Prueba de aceptación**
+- Se comprobará que al consultar una publicación en el tablón se muestran su autor, contenido y fecha de creación de forma correcta.
+- Se comprobará que la información deja de mostrarse tras la eliminación de la publicación.
 
-Como Estudiante quiero dentro de las Publicaciones poder poner un título a mi pregunta y saber si está resuelta por otro estudiante dentro del grupo.
 
-Prueba de aceptación
-- Se comprobará la publicación de una pregunta de un estudiante en la que el título se vea de forma correcta.
-- Se hará una prueba en la que se responda una pregunta y aparezca como respondida.
-  
-#### R.I.10. Información de Respuesta
+#### R.I.09. Información de Pregunta (Hereda de Publicación)
 
-Como Estudiante quiero dentro de las Publicaciones poder responder a las Preguntas de los demás estudiantes en el Tablón de Preguntas
+Como Estudiante, quiero visualizar dentro de las Preguntas del tablón su título identificativo y saber si ya figura como resuelta por el autor.
 
-Prueba de aceptación
-- Se realizará una prueba en la que un estudiante responda a una pregunta y esta sea visualizada de forma correcta por todos los estudiantes que forman el grupo.
+**Los atributos de este requisito son:**
+- `titulo`: Encabezado o enunciado breve de la duda (además de los heredados de Publicación).
+- `estaResuelta`: Estado de la duda (Booleano: Resuelta / Pendiente).
 
-  PONER ATRIBUTOS DE LOS REQUISITOS DE INFORMACIÓN
-#### 4.1.2. Reglas de negocio
+**Prueba de aceptación**
+- Se comprobará que al consultar una pregunta de un estudiante su título y atributos heredados se vean de forma correcta.
+- Se hará una prueba en la que se marque como resuelta una pregunta y aparezca reflejado el estado `estaResuelta = true`.
 
-##### R.N.01. Límites de tamaño en grupos
 
-El número de estudiantes unidos a un Grupo no puede superar su valor maxMiembros ni ser inferior a minMiembros (mínimo 2, máximo 20).
+#### R.I.10. Información de Respuesta (Hereda de Publicación)
 
-##### R.N.02. Gestión de Quedadas
+Como Estudiante, quiero visualizar dentro de las Publicaciones las Respuestas asociadas a las Preguntas de los demás estudiantes en el Tablón de Preguntas.
 
-Solo los estudiantes pertenecientes a un Grupo pueden crear o unirse a una Quedada vinculada a dicho grupo.
+**Los atributos de este requisito son:**
+- *(Hereda `autor`, `contenido` y `fechaCreacion` de Publicación)*.
 
-##### R.N.03. Eliminación de Preguntas en Tablón
+**Prueba de aceptación**
+- Se realizará una prueba en la que un estudiante responda a una pregunta y se compruebe que el contenido y la fecha de la respuesta son visualizados de forma correcta por todos los estudiantes que forman el grupo.
 
-Solo el Estudiante que ha hecho una pregunta o un Admin pueden eliminar un post del TablónPreguntas.
 
-##### R.N.04. Coexistencia de Salas
+### 4.1.2. Reglas de negocio
+
+#### R.N.01. Límites de tamaño en grupos
+
+El número de estudiantes unidos a un Grupo no puede superar su valor `maxMiembros` ni ser inferior a `minMiembros` (mínimo 2, máximo 20).
+
+**Prueba de aceptación**
+- El estudiante probará a meterse en un grupo con 20 estudiantes ya incluidos (debe fallar).
+- El estudiante probará a meterse en un grupo con 15 estudiantes ya incluidos (debe funcionar).
+
+
+#### R.N.02. Gestión de Quedadas
+
+Solo los estudiantes pertenecientes a un Grupo pueden crear, visualizar o unirse a una Quedada vinculada a dicho grupo.
+
+**Prueba de aceptación**
+- Un estudiante miembro intentará crear o unirse a una Quedada vinculada a su grupo (debe funcionar).
+- Un estudiante intentará visualizar una Quedada vinculada a un grupo al que no pertenece (debe fallar).
+
+
+#### R.N.03. Eliminación de Preguntas en Tablón
+
+Solo el Estudiante que ha hecho una pregunta o un Administrador pueden eliminar dicho post del Tablón de Preguntas.
+
+**Prueba de aceptación**
+- Un estudiante que no ha creado la pregunta intentará eliminarla (debe fallar).
+- El estudiante que ha creado la pregunta o un Administrador intentará eliminarla (debe funcionar).
+
+
+#### R.N.04. Coexistencia de Salas
 
 Un Grupo solo puede tener activa una Sala de estudio virtual al mismo tiempo.
 
-##### R.N.05. Aprobación en Grupos Privados
+**Prueba de aceptación**
+- Se intentará crear una nueva Sala cuando en el Grupo ya hay una activa existente (debe fallar).
+- Se intentará crear una nueva Sala cuando en el Grupo no hay ninguna activa (debe funcionar).
 
-Si un Grupo es marcado como esPrivado = true, la solicitud de ingreso de un nuevo Estudiante debe ser aprobada explícitamente por el creador del grupo o un Admin.
 
+#### R.N.05. Aprobación en Grupos Privados
+
+Si un Grupo es marcado como `esPrivado = true`, hará falta introducir el `codigoUnion` para acceder al grupo de estudio y se comprobará si es correcto.
+
+**Prueba de aceptación**
+- Se comprobará que al ser `esPrivado = true`, el sistema exija al estudiante introducir un código de unión válido para incluirlo en el grupo (y falle si es incorrecto).
+- Se comprobará que al ser `esPrivado = false`, el estudiante sea incluido directamente en el grupo sin pedir código.
+
+#### R.N.06. Restricción a grupos de los estudiantes vetados
+
+Si un Usuario es marcado como `esVetado = true` no podrá acceder a ningún grupo de estudio.
+
+**Prueba de aceptación**
+- Se comprobará que al ser `esVetado = true`, el sistema le restringirá al usuario acceder a cualquier grupo de estudio.
+- Se comprobará que al ser `esVetado = false`, el sistema le permitirá al usuario acceder a los grupos de estudio a los que pertenece.
 
 ### 4.2. Mapa de historias de usuario (opcional)
 
@@ -378,8 +481,18 @@ para [razón]
 ## 5. Modelo conceptual
 
 ### 5.1. Diagramas de clases UML
+<img width="1102" height="981" alt="image" src="https://github.com/user-attachments/assets/533d9d75-7059-465a-9a37-fb25edf0ef49" />
 
-- con restricciones.
+
+
+
+Restricciones:
+- R1: Todos los Id tienen que ser únicos (IdUsuario, IdSala, IdGrupo, etc).
+- R2: El email del estudiante debe terminar en "@alum.us.es".
+- R3: La fecha de la creación del usuario debe ser menor o igual a la fecha actual { fechaRegistro <= currentTime() }
+- R4: La fecha de la quedada debe ser posterior a la fecha de creación del grupo { quedada.fechaHora > grupo.fechaCreacion }
+- R5: La duración estimada de la quedada debe ser positiva{ duracionEstimada > 0 }
+- R6: La fecha de creación de la publicación debe ser mayor que la fecha de la creación del grupo { publicacion.fechaCreacion > grupo.fechaCreacion }
 
 ### 5.2. Escenarios de prueba
 
