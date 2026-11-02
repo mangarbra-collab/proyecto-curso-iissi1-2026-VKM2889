@@ -80,30 +80,29 @@ El sistema por tanto tendrá sólo dos tipos de usuarios, con sus permisos:
 
 #### R.F.01. Registro de datos
 
-Como estudiante, quiero crear una cuenta para acceder a los servicios de la aplicación
+Como estudiante, quiero crear una cuenta para acceder a los servicios de la aplicación.
 
 **Prueba de aceptación**
-- Crear una cuenta de estudiante siendo estudiante
-- Crear una cuenta de administrador siendo estudiante (debe fallar)
+- Crear una cuenta de estudiante con datos válidos y verificar el alta en el sistema.
+- Intentar crear una cuenta de administrador desde el formulario público (debe fallar).
 
- 
+
 #### R.F.02. Gestión de Perfil
 
-Como estudiante, quiero editar mis datos por si son erróneos o han cambiado
+Como estudiante, quiero editar mis datos personales y académicos por si son erróneos o han cambiado.
 
 **Prueba de aceptación**
-- Editar la carrera al cambiar de carrera
-- Confirmar la edición de la biografía al editarla desde un perfil de estudiante/administrador
+- Editar la titulación y la disponibilidad en el perfil y verificar que se guarden los datos.
+- Intentar dejar el campo obligatorio de correo electrónico vacío (debe fallar).
 
 
-#### R.F.03. Administración de Usuarios
+#### R.F.03. Administración y veto de Usuarios (Administrador)
 
-Como Administrador, quiero editar datos de otras cuentas de estudiantes o incluso vetar para moderar de manera más sencilla
+Como Administrador, quiero editar datos de otras cuentas de estudiantes o incluso vetar para mantener la plataforma moderada.
 
 **Prueba de aceptación**
-- Vetar un estudiante y ver si se veta
-- Editar datos (carrera, bio, grupos, etc.) de un estudiante y ver si se editan
-- Vetar un grupo y ver si se veta
+- Vetar un estudiante infractor (cambiar el estado) y verificar que no puede iniciar sesión.
+- Vetar un grupo que incumpla la normativa y verificar que está bloqueado.
 
 
 #### R.F.04. Creación de grupos
@@ -111,39 +110,37 @@ Como Administrador, quiero editar datos de otras cuentas de estudiantes o inclus
 Como estudiante, quiero crear grupos de estudio indicando si son públicos o privados para organizar espacios de estudio a medida.
 
 **Prueba de aceptación**
-- Crear un grupo público y verificar que aparece en las búsquedas
-- Crear un grupo privado y verificar que se genera un código de unión y no aparece accesible públicamente
-- Debe cumplir la RN01
-- Debe cumplir la RN05
+- Crear un grupo público y verificar que aparece en las búsquedas como abierto.
+- Crear un grupo privado y verificar que se genera un código de unión y exige verificación.
+- Verificar que el grupo se inicia respetando los límites de la RN01 y la configuración de la RN05.
 
 
-#### R.F.05 Búsqueda de grupos (1)
+#### R.F.05. Búsqueda de grupos y solicitud de unión
 
-Como estudiante, quiero buscar grupos por materia o nombre y solicitar mi ingreso para encontrar compañeros con mis mismos intereses.
+Como estudiante, quiero buscar grupos públicos por materia o nombre y solicitar mi ingreso para encontrar compañeros con mis mismos intereses.
 
 **Prueba de aceptación**
-- Buscar un grupo por una materia o nombre existente y verificar que aparece en los resultados
-- Al unirse, debe de cumplir la RN01
+- Buscar un grupo por una materia o nombre existente y verificar que aparece en los resultados.
+- Unirse a un grupo de la lista verificando que cumple el límite de miembros de la RN01.
 
 
 #### R.F.06. Acceso a grupos privados
 
-Como estudiante, quiero acceder a grupos de estudio privados introduciendo un código de unión para unirme a grupos exclusivos de mis compañeros.
+Como estudiante, quiero acceder a grupos de estudio privados introduciendo un código de unión para unirme a grupos exclusivos.
 
 **Prueba de aceptación**
-- Introducir un código de unión válido y verificar el ingreso al grupo privado
-- Intentar acceder con un código erróneo o inventado (debe fallar)
+- Introducir un código de unión válido y verificar que se guarda la solicitud de unión pendiente según la RN05.
+- Intentar acceder con un código erróneo o inventado (debe fallar).
 
 
-#### R.F.07. Gestión y búsqueda de miembros (2)
+#### R.F.07. Búsqueda y gestión de miembros
 
-Como creador del grupo o Administrador, quiero expulsar miembros de un grupo para mantener un entorno de estudio adecuado y moderado.
+Como creador del grupo o Administrador, quiero expulsar miembros de un grupo, buscándolos por su nombre de usuario, para mantener un entorno de estudio adecuado y moderado.
 
 **Prueba de aceptación**
-- Buscar a un miembro por su username y que se enseñe su perfil
-- Expulsar a un miembro siendo el creador del grupo y verificar que pierde el acceso
-- Expulsar a un miembro siendo Administrador y verificar que pierde el acceso
-- Intentar expulsar a un miembro siendo un estudiante normal del grupo (debe fallar)
+- Buscar a un miembro por su nombre de usuario y verificar que se muestra su perfil.
+- Expulsar a un miembro siendo el creador del grupo o Administrador, y verificar que pierde el acceso.
+- Intentar expulsar a un miembro siendo un estudiante sin permisos del creador del grupo ni de Administrador (debe fallar).
 
 
 #### R.F.08. Publicar material de estudio
@@ -151,38 +148,37 @@ Como creador del grupo o Administrador, quiero expulsar miembros de un grupo par
 Como miembro de un grupo, quiero publicar material en el tablón para compartir apuntes y recursos con mis compañeros.
 
 **Prueba de aceptación**
-- Subir un archivo o enlace válido y verificar que aparece publicado en el tablón del grupo
-- Intentar publicar material en el tablón de un grupo al que no se pertenece (debe fallar)
+- Subir un archivo o enlace válido y verificar que queda publicado en el tablón del grupo.
+- Intentar publicar material en el tablón de un grupo al que no se pertenece (debe fallar).
 
 
 #### R.F.09. Publicar pregunta
 
-Como miembro de un grupo, quiero publicar una duda en el tablón de preguntas para que otros compañeros puedan ayudarme a resolverla.
+Como miembro de un grupo, quiero publicar una duda con título y descripción en el tablón de preguntas para que otros compañeros puedan ayudarme a resolverla.
 
 **Prueba de aceptación**
-- Publicar una pregunta con texto válido y verificar que aparece listada en el tablón del grupo
-- Intentar publicar una pregunta sin texto (debe fallar)
-- Cumplir la RN03 al eliminar una pregunta siendo administrador
+- Publicar una pregunta con título y cuerpo válidos y verificar que aparece listada en el tablón del grupo.
+- Intentar publicar una pregunta sin título ni cuerpo (debe fallar).
 
 
-#### R.F.10. Marcar pregunta resuelta
+#### R.F.10. Responder pregunta y marcarla como resuelta
 
-Como autor de la pregunta, quiero cambiar el estado de mi duda a "resuelta" para que los demás sepan que ya no necesito ayuda.
-
-**Prueba de aceptación**
-- Marcar una pregunta propia como resuelta y verificar que el estado cambia a `true`
-- Intentar marcar como resuelta la pregunta de otro estudiante sin ser Administrador (debe fallar)
-
-
-#### R.F.11. Búsqueda, creación y unión de salas virtuales (3)
-
-Como miembro de un grupo, quiero abrir o unirme a una sala de videoconferencia asociada al grupo para estudiar en directo con mis compañeros.
+Como miembro de un grupo, quiero responder a las preguntas del tablón, y si soy el autor de la pregunta, quiero cambiar el estado de mi duda a "resuelta" cuando quede aclarada.
 
 **Prueba de aceptación**
-- Abrir una nueva sala virtual dentro del grupo y verificar que el resto de miembros puede buscarla dentro del grupo y verla
-- Unirse a una sala virtual activa siendo miembro del grupo
-- Intentar unirse a la sala virtual de un grupo ajeno (debe fallar)
-- Debe cumplir la RN04
+- Subir una respuesta en una pregunta abierta y verificar que se añade al hilo de la conversación correspondiente.
+- Marcar una pregunta propia como resuelta y verificar que el estado cambia a `true`.
+- Intentar marcar como resuelta la pregunta de otro estudiante sin ser Administrador (debe fallar).
+
+
+#### R.F.11. Búsqueda, creación y unión de salas virtuales
+
+Como miembro de un grupo, quiero consultar si hay una videollamada en curso, unirla o abrir una sala de videoconferencia nueva asociada al grupo para estudiar en directo con mis compañeros.
+
+**Prueba de aceptación**
+- Abrir una nueva sala virtual dentro del grupo si no hay una activa, y unirse a ella siendo miembro del grupo.
+- Consultar la sección de salas virtuales del grupo y verificar si aparece listada una activa con sus miembros participantes.
+- Intentar abrir una segunda sala virtual cuando ya hay una activa incumpliendo la RN04 (debe fallar).
 
 
 #### R.F.12. Organizar quedada
@@ -190,19 +186,17 @@ Como miembro de un grupo, quiero abrir o unirme a una sala de videoconferencia a
 Como miembro de un grupo, quiero programar una quedada especificando fecha, hora y ubicación (física o virtual) para coordinar sesiones de estudio conjuntas.
 
 **Prueba de aceptación**
-- Crear una quedada con fecha, hora y ubicación física válidas y verificar que se publica
-- Crear una quedada introduciendo un enlace virtual en lugar de ubicación física y verificar su creación
-- Intentar crear una quedada con una fecha u hora en el pasado (debe fallar)
+- Crear una quedada con fecha, hora y ubicación física válidas y verificar que se publica.
+- Intentar crear una quedada con una fecha u hora en el pasado (debe fallar).
 
 
-#### R.F.13. Búsqueda de quedada y confirmación de asistencia (4)
+#### R.F.13. Búsqueda de quedada y confirmación de asistencia
 
-Como miembro de un grupo, quiero buscar una quedada en ese mismo grupo y marcar mi asistencia a una quedada programada para que los organizadores sepan cuánta gente acudirá.
+Como miembro de un grupo, quiero buscar una quedada programada en ese mismo grupo y marcar mi asistencia para que los organizadores sepan cuánta gente acudirá.
 
 **Prueba de aceptación**
-- Marcar asistencia a una quedada activa y verificar que el usuario aparece en la lista de asistentes
-- Desmarcar la asistencia a una quedada previamente confirmada y verificar que se elimina de la lista
-- Debe cumplir la RN02
+- Filtrar la lista de quedadas programadas del grupo por fecha y verificar que se muestran los eventos filtrados.
+- Confirmar o cancelar la asistencia a una quedada activa cumpliendo la pertenencia exigida en la RN02.
 
 
 #### R.F.14. Moderación de tablones (Administrador)
@@ -210,57 +204,62 @@ Como miembro de un grupo, quiero buscar una quedada en ese mismo grupo y marcar 
 Como Administrador, quiero poder eliminar publicaciones o preguntas de cualquier tablón para mantener la plataforma libre de contenido inapropiado.
 
 **Prueba de aceptación**
-- Eliminar una publicación de material inapropiado siendo Administrador y verificar su borrado
-- Eliminar una pregunta inapropiada siendo Administrador y verificar su borrado
-- Intentar eliminar una publicación ajena siendo un estudiante normal (debe fallar)
+- Eliminar una pregunta o una publicación de material inapropiado siendo Administrador cumpliendo la RN03 y verificar su borrado.
+- Intentar eliminar una publicación ajena con cuenta de estudiante (debe fallar).
 
 
-#### R.F.15. Moderación de quedadas (Administrador) (5)
+#### R.F.15. Moderación de quedadas (Administrador)
 
-Como Administrador, quiero poder consultar los datos de las quedadas y eliminar quedadas programadas en cualquier grupo para evitar actividades que incumplan las normas.
-
-**Prueba de aceptación**
-- Eliminar una quedada activa de un grupo ajeno siendo Administrador y verificar su borrado
-- Acceder a un grupo privado sin ser miembro (usando privilegios de Admin) y eliminar una quedada
-
-
-TODO los 10 requisitos funcionales de consulta
-
-#### R.F.16. Búsqueda de datos en Perfil (6)
-
-Como estudiante, quiero ver mis datos públicos y privados almacenados en mi perfil 
+Como Administrador, quiero poder consultar la lista de las quedadas programadas de cualquier grupo y eliminar aquellas que incumplan las normas.
 
 **Prueba de aceptación**
-- Enseñar los datos al entrar en la sección de datos del perfil
-- No enseñar el dato si no está incluido o es un dato no soportado
+- Eliminar una quedada activa fraudulenta siendo Administrador y verificar su borrado del grupo.
+- Consultar el listado de quedadas programadas de cualquier grupo, incluso siendo privado, con permisos de Administrador.
 
 
-#### R.F.17. Consulta de material de estudio (7)
+#### R.F.16. Búsqueda de datos de Perfil
 
-Como miembro de un grupo, quiero consultar el material publicado en el tablón por otros compañeros.
-
-**Prueba de aceptación**
-- Consultar un archivo o enlace válido que aparece publicado en el tablón
-- Intentar consultar material en el tablón de un grupo al que no se pertenece (debe fallar)
-
-
-#### R.F.18. Consultar pregunta (8)
-
-Como miembro de un grupo, quiero consultar las preguntas que otros compañeros han hecho para quizás resolver mi duda sin tener que preguntar
+Como estudiante, quiero ver los datos académicos y de disponibilidad de mi perfil y del de otros estudiantes de mi grupo.
 
 **Prueba de aceptación**
-- Consultar una pregunta creada por un compañero que aparezca listada en el tablón del grupo
-- Intentar consultar una pregunta que no existe (debe fallar)
-- Cumplir la RN03 al eliminar una pregunta siendo administrador
+- Acceder al perfil de un estudiante y verificar que se muestran sus redes sociales, su carrera y sus horarios de estudio.
+- Intentar visualizar datos privados de un usuario (debe fallar).
 
 
-#### R.F.08. Consultar material de estudio (9)
+#### R.F.17. Consulta y filtrado de material de estudio
 
-Como miembro de un grupo, quiero consultar material en el tablón para utilizarlo en mis estudios.
+Como miembro de un grupo, quiero consultar y buscar el material publicado en el tablón por otros compañeros para descargar apuntes.
 
 **Prueba de aceptación**
-- Consultar un archivo o enlace válido que aparece publicado en el tablón del grupo
-- Intentar consultar material en el tablón de un grupo al que no se pertenece (debe fallar)
+- Buscar un archivo o enlace válido en el tablón por su título y acceder al recurso correspondiente.
+- Intentar consultar material en el tablón de un grupo al que no se pertenece (debe fallar).
+
+
+#### R.F.18. Consultas de preguntas y respuestas del tablón
+
+Como miembro de un grupo, quiero consultar las preguntas del tablón (filtrando por "resueltas" o "pendientes") y resolver mi duda sin repetir hilos.
+
+**Prueba de aceptación**
+- Filtrar las preguntas del tablón por "resueltas" y verificar que solo aparecen listadas aquellas con estado `true` y sus respuestas.
+- Intentar consultar una pregunta eliminada o de un grupo ajeno privado (debe fallar).
+
+
+#### R.F.19. Consulta global de usuarios registrados (Administrador)
+
+Como Administrador, quiero buscar y consultar el listado completo de usuarios registrados en el sistema para inspeccionar cuentas y gestionar incidencias.
+
+**Prueba de aceptación**
+- Consultar la lista completa de Usuarios del sistema filtrando por "activo" o "vetado" desde una cuenta de Administrador.
+- Intentar acceder al listado global de Usuarios desde una cuenta de estudiante (debe fallar).
+
+
+#### R.F.20. Consulta global de estadísticas de la plataforma (Administrador)
+
+Como Administrador, quiero consultar las métricas de la plataforma (total de usuarios, total de grupos activos, total de quedadas…) para estudiar el rendimiento de la plataforma.
+
+**Prueba de aceptación**
+- Acceder al panel de estadísticas como Administrador y verificar que se muestran los datos y contadores actualizados en tiempo real.
+- Intentar acceder al panel de métricas desde una cuenta de estudiante (debe fallar).
 
   
 #### 4.1.1. Requisitos de información
