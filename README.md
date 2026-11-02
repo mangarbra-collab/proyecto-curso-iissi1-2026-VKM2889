@@ -145,7 +145,7 @@ Como creador del grupo o Administrador, quiero expulsar miembros de un grupo, bu
 
 #### R.F.08. Publicar material de estudio
 
-Como miembro de un grupo, quiero publicar material en el tablón para compartir apuntes y recursos con mis compañeros.
+Como miembro de un grupo, quiero publicar material en el tablón de preguntas para compartir apuntes y recursos con mis compañeros.
 
 **Prueba de aceptación**
 - Subir un archivo o enlace válido y verificar que queda publicado en el tablón del grupo.
@@ -173,7 +173,7 @@ Como miembro de un grupo, quiero responder a las preguntas del tablón, y si soy
 
 #### R.F.11. Búsqueda, creación y unión de salas virtuales
 
-Como miembro de un grupo, quiero consultar si hay una videollamada en curso, unirla o abrir una sala de videoconferencia nueva asociada al grupo para estudiar en directo con mis compañeros.
+Como miembro de un grupo, quiero consultar si hay una videollamada en curso, unirme (o abrir) una sala de videoconferencia nueva asociada al grupo para estudiar con mis compañeros en directo.
 
 **Prueba de aceptación**
 - Abrir una nueva sala virtual dentro del grupo si no hay una activa, y unirse a ella siendo miembro del grupo.
@@ -219,7 +219,7 @@ Como Administrador, quiero poder consultar la lista de las quedadas programadas 
 
 #### R.F.16. Búsqueda de datos de Perfil
 
-Como estudiante, quiero ver los datos académicos y de disponibilidad de mi perfil y del de otros estudiantes de mi grupo.
+Como estudiante, quiero ver los datos académicos y de disponibilidad de mi perfil y de otros estudiantes de mi grupo.
 
 **Prueba de aceptación**
 - Acceder al perfil de un estudiante y verificar que se muestran sus redes sociales, su carrera y sus horarios de estudio.
