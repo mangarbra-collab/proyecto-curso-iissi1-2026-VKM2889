@@ -473,6 +473,8 @@ para [razón]
 ## 5. Modelo conceptual
 
 ### 5.1. Diagramas de clases UML
+<img width="1401" height="975" alt="image" src="https://github.com/user-attachments/assets/3060a530-2e91-409e-94cf-fabab8066b01" />
+
 
 - con restricciones.
 
