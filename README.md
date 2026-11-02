@@ -487,12 +487,11 @@ para [razón]
 
 Restricciones:
 - R1: Todos los Id tienen que ser únicos (IdUsuario, IdSala, IdGrupo, etc).
-- R2: El nombre de usuario debe ser único.
-- R3: El email del usuario debe terminar en "@alum.us.es".
-- R4: La fecha de la creación del usuario debe ser menor o igual a la fecha actual { fechaRegistro <= currentTime() }
-- R5: La fecha de la quedada debe ser posterior a la fecha de creación del grupo { quedada.fechaHora > grupo.fechaCreacion }
-- R6: La duración estimada de la quedada debe ser positiva{ duracionEstimada > 0 }
-- R7: La fecha de creación de la publicación debe ser mayor que la fecha de la creación del grupo { publicacion.fechaCreacion > grupo.fechaCreacion }
+- R2: El email del usuario debe terminar en "@alum.us.es".
+- R3: La fecha de la creación del usuario debe ser menor o igual a la fecha actual { fechaRegistro <= currentTime() }
+- R4: La fecha de la quedada debe ser posterior a la fecha de creación del grupo { quedada.fechaHora > grupo.fechaCreacion }
+- R5: La duración estimada de la quedada debe ser positiva{ duracionEstimada > 0 }
+- R6: La fecha de creación de la publicación debe ser mayor que la fecha de la creación del grupo { publicacion.fechaCreacion > grupo.fechaCreacion }
 
 ### 5.2. Escenarios de prueba
 
