@@ -494,9 +494,28 @@ Restricciones:
 - R5: La duración estimada de la quedada debe ser positiva{ duracionEstimada > 0 }
 - R6: La fecha de creación de la publicación debe ser mayor que la fecha de la creación del grupo { publicacion.fechaCreacion > grupo.fechaCreacion }
 
+
 ### 5.2. Escenarios de prueba
 
-- con descripción textual y diagrama de objetos UML.
+#### Escenario 1: Creación de un grupo público, quedada presencial y duda en el tablón
+
+**Descripción textual:**
+Álvaro y Ángel son dos estudiantes de Ingeniería del Software registrados en la plataforma, con su correo `@alum.us.es`. Álvaro crea un grupo de estudio público llamado "Repaso IISSI-1" para la asignatura de IISSI. 1, y Ángel se une al grupo (cumpliendo el mínimo de 2 miembros de la RN-01). 
+
+Dentro del grupo se genera su tablón de preguntas. Ángel publica una pregunta en el tablón porque no entiende el tema de normalización, y Álvaro le escribe una respuesta explicándolo, por lo que la duda queda marcada como resuelta. Además, para estudiar juntos antes del examen, organizan una quedada presencial de 120 minutos en el CRAI de Reina Mercedes a la que asisten los dos.
+
+<img width="771" height="1041" alt="escenario_1_isssi1" src="https://github.com/user-attachments/assets/9a060eb7-a3be-4a6c-9382-db86b7670401" />
+
+
+#### Escenario 2: Grupo privado con sala virtual activa y supervisión del administrador
+
+**Descripción textual:**
+Juan y Manuel son dos estudiantes que quieren estudiar Redes sin que entre gente externa, así que Juan crea un grupo privado llamado "Prácticas de Redes" con el código de unión `"REDES26"`. Manuel introduce ese código para entrar al grupo (cumpliendo la RN-05). 
+
+Como cada uno está en su casa, abren una única sala virtual llamada "Sala Packet Tracer" (cumpliendo la RN-04 de una sola sala activa por grupo) y ambos se conectan a la llamada. Mientras tanto, el administrador del sistema, Carlos, consulta las estadísticas generales de la plataforma y comprueba que hay un usuario vetado (`estVetado`) que tiene restringido el acceso a cualquier grupo (cumpliendo la RN-06).
+
+<img width="1202" height="667" alt="escenario_2_isssi1" src="https://github.com/user-attachments/assets/ab8f3280-fd9b-43cf-95b0-743f5c78cb10" />
+
 
 ## 6. Matrices de trazabilidad
 
