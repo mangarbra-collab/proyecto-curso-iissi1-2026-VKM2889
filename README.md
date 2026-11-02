@@ -438,10 +438,10 @@ Un Grupo solo puede tener activa una Sala de estudio virtual al mismo tiempo.
 
 ##### R.N.05. Aprobación en Grupos Privados
 
-Si un Grupo es marcado como esPrivado = true, la solicitud de ingreso de un nuevo Estudiante debe ser aprobada explícitamente por el creador del grupo o un Admin.
+Si un Grupo es marcado como esPrivado = true, hará falta un código de unión para acceder al grupo de estudio y se comprobará si es correcto.
 
 **Prueba de aceptación**
-- Se comprobará que al ser esPrivado = true, un estudiante mande una solicitud de ingreso.
+- Se comprobará que al ser esPrivado = true, un estudiante mande un código de unión.
 - Se comprobará que al ser esPrivado = false, un estudiante sea incluido directamente en el grupo.
 
 ### 4.2. Mapa de historias de usuario (opcional)
