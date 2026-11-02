@@ -459,6 +459,14 @@ Si un Grupo es marcado como `esPrivado = true`, hará falta introducir el `codig
 - Se comprobará que al ser `esPrivado = true`, el sistema exija al estudiante introducir un código de unión válido para incluirlo en el grupo (y falle si es incorrecto).
 - Se comprobará que al ser `esPrivado = false`, el estudiante sea incluido directamente en el grupo sin pedir código.
 
+#### R.N.06. Restricción a grupos de los estudiantes vetados
+
+Si un Usuario es marcado como `esVetado = true` no podrá acceder a ningún grupo de estudio.
+
+**Prueba de aceptación**
+-Se comprobará que al ser `esVetado = true`, el sistema le restringirá al estudiante acceder a cualquier grupo de estudio.
+-Se comprobará que al ser `esVetado = false`, el sistema le permitirá al estudiante acceder a los grupos de estudio a los que pertenece.
+
 ### 4.2. Mapa de historias de usuario (opcional)
 
 ### 4.3. Requisitos no funcionales (opcional)
@@ -477,7 +485,14 @@ para [razón]
 
 
 
-- con restricciones.
+Restricciones:
+- Todos los Id tienen que ser únicos (IdUsuario, IdSala, IdGrupo, etc).
+- El nombre de usuario debe ser único.
+- El email del usuario debe terminar en "@gmail.com" o "@alum.us.es".
+- La fecha de la creación del usuario debe ser menor o igual a la fecha actual { fechaRegistro <= currentTime() }
+- La fecha de la quedada debe ser posterior a la fecha de creación del grupo { quedada.fechaHora > grupo.fechaCreacion }
+- La duración estimada de la quedada debe ser positiva{ duracionEstimada > 0 }
+- La fecha de creación de la publicación debe ser mayor que la fecha de la creación del grupo { publicacion.fechaCreacion > grupo.fechaCreacion }
 
 ### 5.2. Escenarios de prueba
 
