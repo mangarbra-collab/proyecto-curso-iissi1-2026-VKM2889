@@ -417,7 +417,7 @@ Como Estudiante, quiero visualizar dentro de las Publicaciones las Respuestas as
 
 #### R.N.01. Límites de tamaño en grupos
 
-El número de estudiantes unidos a un Grupo no puede superar su valor `maxMiembros` ni ser inferior a `minMiembros` (mínimo 2, máximo 20).
+El número de estudiantes unidos a un Grupo no puede superar su valor `maxMiembros` ni ser inferior a `minMiembros` (máximo 20).
 
 **Prueba de aceptación**
 - El estudiante probará a meterse en un grupo con 20 estudiantes ya incluidos (debe fallar).
@@ -467,6 +467,50 @@ Si un Usuario es marcado como `esVetado = true` no podrá acceder a ningún grup
 - Se comprobará que al ser `esVetado = true`, el sistema le restringirá al usuario acceder a cualquier grupo de estudio.
 - Se comprobará que al ser `esVetado = false`, el sistema le permitirá al usuario acceder a los grupos de estudio a los que pertenece.
 
+#### R.N.07. Dominio de correo institucional
+
+Para poder registrarse en la plataforma como estudiante, el correo electrónico utilizado debe pertenecer obligatoriamente al dominio institucional de la universidad (`@alum.us.es`).
+
+**Prueba de aceptación**
+- Un usuario intentará registrarse con un correo terminado en `@gmail.com` o `@us.es` (debe fallar).
+- Un usuario intentará registrarse con un correo terminado en `@alum.us.es` (debe funcionar).
+
+
+#### R.N.08. Coherencia en la fecha de registro
+
+La fecha de creación de la cuenta de un usuario no puede ser posterior al momento actual en el que se realiza el alta en el sistema.
+
+**Prueba de aceptación**
+- Se intentará registrar un usuario asignándole una fecha de creación futura respecto a la fecha y hora actuales (debe fallar).
+- Se registrará un usuario con la fecha y hora actuales del sistema (debe funcionar).
+
+
+#### R.N.09. Cronología de Quedadas respecto al Grupo
+
+Una Quedada no puede programarse para una fecha u hora anterior a la creación del Grupo de estudio al que pertenece.
+
+**Prueba de aceptación**
+- Un estudiante intentará programar una Quedada con una fecha anterior a la creación del grupo (debe fallar).
+- Un estudiante intentará programar una Quedada con una fecha posterior a la creación del grupo (debe funcionar).
+
+
+#### R.N.10. Duración válida de las Quedadas
+
+Toda Quedada debe tener una duración estimada estrictamente mayor que cero (expresada en minutos/horas positivas).
+
+**Prueba de aceptación**
+- Un estudiante intentará crear una Quedada indicando una duración de `0` o un valor negativo (debe fallar).
+- Un estudiante intentará crear una Quedada indicando una duración positiva, como `60` minutos (debe funcionar).
+
+
+#### R.N.11. Cronología de Publicaciones en el Tablón
+
+La fecha de publicación de una pregunta o mensaje en el Tablón debe ser siempre posterior a la fecha en la que se creó el Grupo correspondiente.
+
+**Prueba de aceptación**
+- Se intentará registrar una publicación en el tablón con una fecha anterior a la creación del grupo (debe fallar).
+- Un estudiante publicará una pregunta en un grupo ya creado con la fecha actual (debe funcionar).
+
 ### 4.2. Mapa de historias de usuario (opcional)
 
 ### 4.3. Requisitos no funcionales (opcional)
@@ -482,18 +526,6 @@ para [razón]
 
 ### 5.1. Diagramas de clases UML
 <img width="1102" height="981" alt="image" src="https://github.com/user-attachments/assets/533d9d75-7059-465a-9a37-fb25edf0ef49" />
-
-
-
-
-Restricciones:
-- R1: Todos los Id tienen que ser únicos (IdUsuario, IdSala, IdGrupo, etc).
-- R2: El email del estudiante debe terminar en "@alum.us.es".
-- R3: La fecha de la creación del usuario debe ser menor o igual a la fecha actual { fechaRegistro <= currentTime() }
-- R4: La fecha de la quedada debe ser posterior a la fecha de creación del grupo { quedada.fechaHora > grupo.fechaCreacion }
-- R5: La duración estimada de la quedada debe ser positiva{ duracionEstimada > 0 }
-- R6: La fecha de creación de la publicación debe ser mayor que la fecha de la creación del grupo { publicacion.fechaCreacion > grupo.fechaCreacion }
-
 
 ### 5.2. Escenarios de prueba
 
